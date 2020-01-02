@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.datewxMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.datewx" >
+    <result column="maintainclass" property="maintainclass" jdbcType="VARCHAR" />
+    <result column="projectid" property="projectid" jdbcType="INTEGER" />
+    <result column="projectname" property="projectname" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="INTEGER" />
+    <result column="incomeclass" property="incomeclass" jdbcType="VARCHAR" />
+    <result column="bzprice" property="bzprice" jdbcType="INTEGER" />
+    <result column="viprice" property="viprice" jdbcType="INTEGER" />
+    <result column="agreementprice" property="agreementprice" jdbcType="INTEGER" />
+    <result column="compensateforprice" property="compensateforprice" jdbcType="INTEGER" />
+    <result column="insuranceprice" property="insuranceprice" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.accp.pojo.datewx" >
+    insert into datewx (maintainclass, projectid, projectname, 
+      price, incomeclass, bzprice, 
+      viprice, agreementprice, compensateforprice, 
+      insuranceprice)
+    values (#{maintainclass,jdbcType=VARCHAR}, #{projectid,jdbcType=INTEGER}, #{projectname,jdbcType=VARCHAR}, 
+      #{price,jdbcType=INTEGER}, #{incomeclass,jdbcType=VARCHAR}, #{bzprice,jdbcType=INTEGER}, 
+      #{viprice,jdbcType=INTEGER}, #{agreementprice,jdbcType=INTEGER}, #{compensateforprice,jdbcType=INTEGER}, 
+      #{insuranceprice,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.pojo.datewx" >
+    insert into datewx
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="maintainclass != null" >
+        maintainclass,
+      </if>
+      <if test="projectid != null" >
+        projectid,
+      </if>
+      <if test="projectname != null" >
+        projectname,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="incomeclass != null" >
+        incomeclass,
+      </if>
+      <if test="bzprice != null" >
+        bzprice,
+      </if>
+      <if test="viprice != null" >
+        viprice,
+      </if>
+      <if test="agreementprice != null" >
+        agreementprice,
+      </if>
+      <if test="compensateforprice != null" >
+        compensateforprice,
+      </if>
+      <if test="insuranceprice != null" >
+        insuranceprice,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="maintainclass != null" >
+        #{maintainclass,jdbcType=VARCHAR},
+      </if>
+      <if test="projectid != null" >
+        #{projectid,jdbcType=INTEGER},
+      </if>
+      <if test="projectname != null" >
+        #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="incomeclass != null" >
+        #{incomeclass,jdbcType=VARCHAR},
+      </if>
+      <if test="bzprice != null" >
+        #{bzprice,jdbcType=INTEGER},
+      </if>
+      <if test="viprice != null" >
+        #{viprice,jdbcType=INTEGER},
+      </if>
+      <if test="agreementprice != null" >
+        #{agreementprice,jdbcType=INTEGER},
+      </if>
+      <if test="compensateforprice != null" >
+        #{compensateforprice,jdbcType=INTEGER},
+      </if>
+      <if test="insuranceprice != null" >
+        #{insuranceprice,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.type1Mapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.type1" >
+    <result column="class" property="class1" jdbcType="VARCHAR" />
+    <result column="id" property="id" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.accp.pojo.type1" >
+    insert into type1 (class1, id)
+    values (#{class1,jdbcType=VARCHAR}, #{id,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.pojo.type1" >
+    insert into type1
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="class1 != null" >
+        class1,
+      </if>
+      <if test="id != null" >
+        id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="class1 != null" >
+        #{class1,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

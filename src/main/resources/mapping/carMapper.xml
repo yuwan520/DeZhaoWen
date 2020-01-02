@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.carMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.car" >
+    <result column="numbercar" property="numbercar" jdbcType="VARCHAR" />
+    <result column="brands" property="brands" jdbcType="VARCHAR" />
+    <result column="typecar" property="typecar" jdbcType="VARCHAR" />
+    <result column="mileage" property="mileage" jdbcType="INTEGER" />
+    <result column="teamno" property="teamno" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.accp.pojo.car" >
+    insert into car (numbercar, brands, typecar, 
+      mileage, teamno)
+    values (#{numbercar,jdbcType=VARCHAR}, #{brands,jdbcType=VARCHAR}, #{typecar,jdbcType=VARCHAR}, 
+      #{mileage,jdbcType=INTEGER}, #{teamno,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.pojo.car" >
+    insert into car
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="numbercar != null" >
+        numbercar,
+      </if>
+      <if test="brands != null" >
+        brands,
+      </if>
+      <if test="typecar != null" >
+        typecar,
+      </if>
+      <if test="mileage != null" >
+        mileage,
+      </if>
+      <if test="teamno != null" >
+        teamno,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="numbercar != null" >
+        #{numbercar,jdbcType=VARCHAR},
+      </if>
+      <if test="brands != null" >
+        #{brands,jdbcType=VARCHAR},
+      </if>
+      <if test="typecar != null" >
+        #{typecar,jdbcType=VARCHAR},
+      </if>
+      <if test="mileage != null" >
+        #{mileage,jdbcType=INTEGER},
+      </if>
+      <if test="teamno != null" >
+        #{teamno,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

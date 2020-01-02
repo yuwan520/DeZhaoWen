@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.payrollMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.payroll" >
+    <id column="payrollid" property="payrollid" jdbcType="VARCHAR" />
+    <result column="payrollname" property="payrollname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    payrollid, payrollname
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from payroll
+    where payrollid = #{payrollid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from payroll
+    where payrollid = #{payrollid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.accp.pojo.payroll" >
+    insert into payroll (payrollid, payrollname)
+    values (#{payrollid,jdbcType=VARCHAR}, #{payrollname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.pojo.payroll" >
+    insert into payroll
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="payrollid != null" >
+        payrollid,
+      </if>
+      <if test="payrollname != null" >
+        payrollname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="payrollid != null" >
+        #{payrollid,jdbcType=VARCHAR},
+      </if>
+      <if test="payrollname != null" >
+        #{payrollname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.payroll" >
+    update payroll
+    <set >
+      <if test="payrollname != null" >
+        payrollname = #{payrollname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where payrollid = #{payrollid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.payroll" >
+    update payroll
+    set payrollname = #{payrollname,jdbcType=VARCHAR}
+    where payrollid = #{payrollid,jdbcType=VARCHAR}
+  </update>
+</mapper>

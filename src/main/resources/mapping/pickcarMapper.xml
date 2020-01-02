@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.pickcarMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.pickcar" >
+    <id column="carNo" property="carno" jdbcType="VARCHAR" />
+    <result column="consultant" property="consultant" jdbcType="VARCHAR" />
+    <result column="driver" property="driver" jdbcType="VARCHAR" />
+    <result column="driverPhone" property="driverphone" jdbcType="VARCHAR" />
+    <result column="businessType" property="businesstype" jdbcType="VARCHAR" />
+    <result column="construction" property="construction" jdbcType="VARCHAR" />
+    <result column="pickOne" property="pickone" jdbcType="VARCHAR" />
+    <result column="expectedCompletion" property="expectedcompletion" jdbcType="TIMESTAMP" />
+    <result column="clearing" property="clearing" jdbcType="VARCHAR" />
+    <result column="estimated" property="estimated" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="repairs" property="repairs" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    carNo, consultant, driver, driverPhone, businessType, construction, pickOne, expectedCompletion, 
+    clearing, estimated, remark, repairs
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from pickcar
+    where carNo = #{carno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from pickcar
+    where carNo = #{carno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.accp.pojo.pickcar" >
+    insert into pickcar (carNo, consultant, driver, 
+      driverPhone, businessType, construction, 
+      pickOne, expectedCompletion, clearing, 
+      estimated, remark, repairs
+      )
+    values (#{carno,jdbcType=VARCHAR}, #{consultant,jdbcType=VARCHAR}, #{driver,jdbcType=VARCHAR}, 
+      #{driverphone,jdbcType=VARCHAR}, #{businesstype,jdbcType=VARCHAR}, #{construction,jdbcType=VARCHAR}, 
+      #{pickone,jdbcType=VARCHAR}, #{expectedcompletion,jdbcType=TIMESTAMP}, #{clearing,jdbcType=VARCHAR}, 
+      #{estimated,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{repairs,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.pojo.pickcar" >
+    insert into pickcar
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="carno != null" >
+        carNo,
+      </if>
+      <if test="consultant != null" >
+        consultant,
+      </if>
+      <if test="driver != null" >
+        driver,
+      </if>
+      <if test="driverphone != null" >
+        driverPhone,
+      </if>
+      <if test="businesstype != null" >
+        businessType,
+      </if>
+      <if test="construction != null" >
+        construction,
+      </if>
+      <if test="pickone != null" >
+        pickOne,
+      </if>
+      <if test="expectedcompletion != null" >
+        expectedCompletion,
+      </if>
+      <if test="clearing != null" >
+        clearing,
+      </if>
+      <if test="estimated != null" >
+        estimated,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="repairs != null" >
+        repairs,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="carno != null" >
+        #{carno,jdbcType=VARCHAR},
+      </if>
+      <if test="consultant != null" >
+        #{consultant,jdbcType=VARCHAR},
+      </if>
+      <if test="driver != null" >
+        #{driver,jdbcType=VARCHAR},
+      </if>
+      <if test="driverphone != null" >
+        #{driverphone,jdbcType=VARCHAR},
+      </if>
+      <if test="businesstype != null" >
+        #{businesstype,jdbcType=VARCHAR},
+      </if>
+      <if test="construction != null" >
+        #{construction,jdbcType=VARCHAR},
+      </if>
+      <if test="pickone != null" >
+        #{pickone,jdbcType=VARCHAR},
+      </if>
+      <if test="expectedcompletion != null" >
+        #{expectedcompletion,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clearing != null" >
+        #{clearing,jdbcType=VARCHAR},
+      </if>
+      <if test="estimated != null" >
+        #{estimated,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="repairs != null" >
+        #{repairs,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.pickcar" >
+    update pickcar
+    <set >
+      <if test="consultant != null" >
+        consultant = #{consultant,jdbcType=VARCHAR},
+      </if>
+      <if test="driver != null" >
+        driver = #{driver,jdbcType=VARCHAR},
+      </if>
+      <if test="driverphone != null" >
+        driverPhone = #{driverphone,jdbcType=VARCHAR},
+      </if>
+      <if test="businesstype != null" >
+        businessType = #{businesstype,jdbcType=VARCHAR},
+      </if>
+      <if test="construction != null" >
+        construction = #{construction,jdbcType=VARCHAR},
+      </if>
+      <if test="pickone != null" >
+        pickOne = #{pickone,jdbcType=VARCHAR},
+      </if>
+      <if test="expectedcompletion != null" >
+        expectedCompletion = #{expectedcompletion,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clearing != null" >
+        clearing = #{clearing,jdbcType=VARCHAR},
+      </if>
+      <if test="estimated != null" >
+        estimated = #{estimated,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="repairs != null" >
+        repairs = #{repairs,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where carNo = #{carno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.pickcar" >
+    update pickcar
+    set consultant = #{consultant,jdbcType=VARCHAR},
+      driver = #{driver,jdbcType=VARCHAR},
+      driverPhone = #{driverphone,jdbcType=VARCHAR},
+      businessType = #{businesstype,jdbcType=VARCHAR},
+      construction = #{construction,jdbcType=VARCHAR},
+      pickOne = #{pickone,jdbcType=VARCHAR},
+      expectedCompletion = #{expectedcompletion,jdbcType=TIMESTAMP},
+      clearing = #{clearing,jdbcType=VARCHAR},
+      estimated = #{estimated,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      repairs = #{repairs,jdbcType=VARCHAR}
+    where carNo = #{carno,jdbcType=VARCHAR}
+  </update>
+</mapper>
