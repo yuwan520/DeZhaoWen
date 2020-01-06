@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,4 +44,19 @@ private ClientBiz Biz;
 	}
 	return map;
  }
+ 
+//删除用户  暂时不删除车
+@DeleteMapping("/clients/{id}")
+public Map<String,String> add(@PathVariable String id) {
+	int js=Biz.remove(id);
+	Map<String,String> map=new HashMap<String, String>();
+	if (js>0) {
+
+		map.put("code","200");
+	
+	}else {
+		map.put("code","500");
+	}
+	return map;
+}
 }

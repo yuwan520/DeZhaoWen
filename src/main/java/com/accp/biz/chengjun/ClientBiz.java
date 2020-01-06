@@ -20,4 +20,8 @@ public class ClientBiz {
     public int add(client record) {
     	return Dao.insertSelective(record);	
     }
+    //删除用户  要同时删除他的车 我暂时还没有删除他的车
+    public int remove(String clientid) {
+    	return Dao.deleteByPrimaryKey(clientid);
+    }
 }
