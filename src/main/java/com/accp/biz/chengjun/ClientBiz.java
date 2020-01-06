@@ -24,4 +24,14 @@ public class ClientBiz {
     public int remove(String clientid) {
     	return Dao.deleteByPrimaryKey(clientid);
     }
+    //修改所用到的查询单个
+    public client find1(String clientid){
+    	return Dao.selectByPrimaryKey(clientid);
+    			}
+  //修改客户
+    public int update(client record){
+    	return Dao.updateByPrimaryKeySelective(record);
+    			}
+    
+    
 }

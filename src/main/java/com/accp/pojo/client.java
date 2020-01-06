@@ -2,6 +2,8 @@ package com.accp.pojo;
 
 import java.util.Date;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class client {
     private String clientid;
 
@@ -10,7 +12,7 @@ public class client {
     private String clientiphone;
 
     private String clientaddress;
-
+    @JSONField(format="yyyy-mm-dd")
     private Date clientbirthday;
 
     private String clientbz;
