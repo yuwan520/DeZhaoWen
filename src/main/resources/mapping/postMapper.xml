@@ -55,4 +55,12 @@
     set postname = #{postname,jdbcType=VARCHAR}
     where postid = #{postid,jdbcType=VARCHAR}
   </update>
+  <select id="selectPostList" resultType="com.accp.pojo.post">
+       select * from post
+  </select>
+  
+  <insert id="addPost" >
+    insert into post (postid, postname)
+    values (#{record.postid}, #{record.postname})
+  </insert>
 </mapper>
