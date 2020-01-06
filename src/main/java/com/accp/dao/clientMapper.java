@@ -1,5 +1,7 @@
 package com.accp.dao;
 
+import java.util.List;
+
 import com.accp.pojo.client;
 
 public interface clientMapper {
@@ -10,6 +12,7 @@ public interface clientMapper {
     int insertSelective(client record);
 
     client selectByPrimaryKey(String clientid);
+   List<client> selectByPrimaryKey1();
 
     int updateByPrimaryKeySelective(client record);
 
