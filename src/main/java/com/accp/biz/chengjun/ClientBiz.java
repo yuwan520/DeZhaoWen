@@ -16,4 +16,8 @@ public class ClientBiz {
     public List<client> find(){
     	return Dao.selectByPrimaryKey1();
     			}
+    //新增用户不新增车
+    public int add(client record) {
+    	return Dao.insertSelective(record);	
+    }
 }
