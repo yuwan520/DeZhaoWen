@@ -1,5 +1,7 @@
 package com.accp.pojo;
 
+import java.util.List;
+
 public class team {
     private Integer teamno;
 
@@ -24,8 +26,9 @@ public class team {
     private String typeg;
 
     private String brands;
+    
 
-    public Integer getTeamno() {
+	public Integer getTeamno() {
         return teamno;
     }
 

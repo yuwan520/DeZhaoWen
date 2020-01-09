@@ -12,7 +12,7 @@
     values (#{classno,jdbcType=INTEGER}, #{classname,jdbcType=VARCHAR}, #{weight,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.accp.pojo.class1s" >
+  <insert id="insertSelective" parameterType="com.accp.pojo.class1" >
     insert into class
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="classno != null" >
