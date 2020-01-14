@@ -1,5 +1,7 @@
 package com.accp.dao;
 
+import java.util.List;
+
 import com.accp.pojo.vehicle;
 
 public interface vehicleMapper {
@@ -10,7 +12,7 @@ public interface vehicleMapper {
     int insertSelective(vehicle record);
 
     vehicle selectByPrimaryKey(String vehiclecp);
-
+    List<vehicle> selectByPrimaryKey1();
     int updateByPrimaryKeySelective(vehicle record);
 
     int updateByPrimaryKey(vehicle record);
