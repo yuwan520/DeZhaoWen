@@ -33,7 +33,10 @@
 
   </select>
   
-  
+      <select id="selectByPrimaryKey2" resultMap="BaseResultMap">
+  SELECT vehicle.`vehiclecp`,brand.`brandname` AS vehiclepp ,motorcycle.`motorcyclecxmc` AS vehiclexh,vehicle.`vehiclejsy`,vehicle.`vehicledh`,`affiliation`.`affiliationname` AS vehiclegs,`engine`.`enginename` AS vehiclefdj,	`client`.`clientname` AS vehiclefname ,vehicle.`vehiclefdq`,vehicle.`vehiclefcjh`,vehicle.`vehicleffdjh`,vehicle.`vehiclefzz`,vehicle.`vehiclefrylb`,vehicle.`vehiclefcx`   FROM  vehicle JOIN brand ON vehicle.`vehiclepp`=brand.`brandid`  JOIN motorcycle ON motorcycle.`motorcyclepp`=vehicle.`vehiclexh` JOIN  affiliation ON affiliation.`affiliationid`=vehicle.`vehiclegs` JOIN `engine` ON `engine`.`engineid` =vehicle.`vehiclefdj` JOIN `client` ON `client`.`clientid`=vehicle.`vehiclefname` where vehicle.`vehiclecp`=  #{vehiclecp,jdbcType=VARCHAR}
+
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from vehicle
     where vehiclecp = #{vehiclecp,jdbcType=VARCHAR}
