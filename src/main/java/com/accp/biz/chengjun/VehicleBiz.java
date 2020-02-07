@@ -44,5 +44,10 @@ public class VehicleBiz {
 		
 	}
 	
+	//查看用户的车
+	public List<vehicle> find3(String name){
+		return Dao.selectByPrimaryKey3(name);
+	}
+	
 	
 }

@@ -14,6 +14,7 @@ public interface vehicleMapper {
     vehicle selectByPrimaryKey(String vehiclecp);
     List<vehicle> selectByPrimaryKey1();
     vehicle selectByPrimaryKey2(String vehiclecp);
+    List<vehicle> selectByPrimaryKey3(String name);
     int updateByPrimaryKeySelective(vehicle record);
 
     int updateByPrimaryKey(vehicle record);

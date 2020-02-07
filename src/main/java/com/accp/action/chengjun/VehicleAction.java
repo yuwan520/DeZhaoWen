@@ -1,6 +1,7 @@
 package com.accp.action.chengjun;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,13 @@ public class VehicleAction {
  	PageHelper.startPage(pageNum,3);
  	 PageInfo<vehicle> info=new PageInfo<>(Biz.find());
  	 return info;
+  }
+  @GetMapping("/ves/{pageNum}/{name}")
+  //查讯用户的车
+  public PageInfo<vehicle> find(@PathVariable int pageNum, @PathVariable  String name){
+	  PageHelper.startPage(pageNum,3);
+	 	 PageInfo<vehicle> info=new PageInfo<>(Biz.find3(name));
+ 	return info;
   }
    
   //新增车辆
