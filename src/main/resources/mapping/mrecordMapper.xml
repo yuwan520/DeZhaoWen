@@ -10,6 +10,35 @@
     <result column="orderTime" property="ordertime" jdbcType="TIMESTAMP" />
     <result column="colsing" property="colsing" jdbcType="VARCHAR" />
   </resultMap>
+  
+    <resultMap id="BaseResultMap1" type="com.accp.vo.chengjun.JieSuanVo" >
+    <result column="carhno" property="carHno" jdbcType="VARCHAR" />
+    <result column="rorder" property="rorder" jdbcType="VARCHAR" />
+    <result column="orderType" property="orderType" jdbcType="VARCHAR" />
+    <result column="status" property="status1" jdbcType="VARCHAR" />
+    <result column="clearing" property="clearing" jdbcType="VARCHAR" />
+    <result column="colsing" property="colsing" jdbcType="TIMESTAMP" />
+    <result column="jiesuanren" property="jiesuanren" jdbcType="VARCHAR" />
+    <result column="estimated" property="estimated" jdbcType="VARCHAR" />
+    <result column="businessType" property="businessType" jdbcType="VARCHAR" />
+    <result column="khname" property="khname" jdbcType="VARCHAR" />
+    <result column="wxgroup" property="wxgroup" jdbcType="VARCHAR" />
+
+  </resultMap>
+    <resultMap id="BaseResultMap2" type="com.accp.vo.chengjun.JieSuanVo1" >
+    <result column="xmName" property="xmName" jdbcType="VARCHAR" />
+    <result column="wxgroup" property="wxgroup" jdbcType="VARCHAR" />
+    <result column="classname" property="classname" jdbcType="VARCHAR" />
+    <result column="manHour" property="manHour" jdbcType="VARCHAR" />
+    <result column="carHno" property="carHno" jdbcType="VARCHAR" />
+    <result column="orderTime" property="orderTime" jdbcType="TIMESTAMP" />
+    <result column="rorder" property="rorder" jdbcType="VARCHAR" />
+     <result column="clientname" property="clientname" jdbcType="VARCHAR" />
+    <result column="vipjglx" property="vipjglx" jdbcType="VARCHAR" />
+    <result column="viplb" property="viplb" jdbcType="VARCHAR" />
+    <result column="estimated" property="estimated" jdbcType="VARCHAR" />
+
+  </resultMap>
   <sql id="Base_Column_List" >
     carHno, status1, btype, rorder, orderType, orderTime, colsing
   </sql>
@@ -19,6 +48,16 @@
     from mrecord
     where carHno = #{carhno,jdbcType=VARCHAR}
   </select>
+  
+   <select id="selectByPrimaryKey1" resultMap="BaseResultMap1"  >
+   SELECT A.`rorder` AS rorder,A.`orderType` AS orderType,A.`status` AS `status`,B.`clearing` AS clearing,A.`colsing` AS colsing,A.`jiesuanren` AS jiesuanren,B.`estimated` AS estimated ,B.`businessType` AS businessType,(SELECT `client`.`clientname` FROM `client` WHERE `client`.`clientid`=D.`vehiclefname` ) AS khname,E.`wxgroup` AS wxgroup ,A.`carHno` AS carHno FROM mrecord AS A JOIN pickcar AS B ON A.`rorder`=B.`wx` JOIN maintains AS C ON C.`wxorders`=B.`wx`  JOIN vehicle AS D  ON D.`vehiclecp`=A.`carHno` JOIN `maintains` AS E ON E.`wxorders`=A.`rorder` GROUP BY  E.`wxgroup`
+
+  </select>
+ <select id="selectByPrimaryKey2" resultMap="BaseResultMap2" parameterType="java.lang.String"  >
+  SELECT B.`xmName`,B.`wxgroup`,D.`classname`,D.`manHour`,A.`orderTime`,A.`carHno`,A.`rorder`,O.`clientname`,P.`vipjglx`,P.`viplb`,F.`estimated` FROM `mrecord` AS A JOIN `maintains` AS B  ON A.`rorder`=B.`wxorders` JOIN `team` AS C ON B.`wxgroup`= C.`teamname` JOIN `class` AS D ON C.`classno`=D.`classno` JOIN vehicle AS E ON A.`carHno`=E.`vehiclecp` JOIN `pickcar` AS F ON A.`carHno`=F.`carNo` JOIN  `vehicle` AS G ON A.`carHno`=G.`vehiclecp` JOIN  `client` AS O ON G.`vehiclefname`=O.`clientid` JOIN `vip` AS P ON O.`clientlb`=P.`vipid` WHERE A.`rorder`=#{rorder,jdbcType=VARCHAR}  GROUP BY B.`xmName`;
+
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from mrecord
     where carHno = #{carhno,jdbcType=VARCHAR}
@@ -104,14 +143,10 @@
     </set>
     where carHno = #{carhno,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.mrecord" >
+  <update id="updateByPrimaryKey" parameterType="java.lang.String"  >
     update mrecord
-    set status1 = #{status1,jdbcType=VARCHAR},
-      btype = #{btype,jdbcType=VARCHAR},
-      rorder = #{rorder,jdbcType=VARCHAR},
-      orderType = #{ordertype,jdbcType=VARCHAR},
-      orderTime = #{ordertime,jdbcType=TIMESTAMP},
+    set 
       colsing = #{colsing,jdbcType=VARCHAR}
-    where carHno = #{carhno,jdbcType=VARCHAR}
+    where rorder = #{rorder,jdbcType=VARCHAR}
   </update>
 </mapper>
