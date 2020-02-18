@@ -79,4 +79,152 @@
       dimissionname = #{dimissionname,jdbcType=VARCHAR}
     where dimissionid = #{dimissionid,jdbcType=VARCHAR}
   </update>
+  
+  <select id="selectDimissionVo" resultType="com.accp.vo.lirui.DimissionVo">
+SELECT  de.`departmentname`,e.`empid`,e.`empname`,e.`empsex`,p.`postname`,d.`dimissiontime`,d.`dimissioncause` FROM `dimission` AS d 
+INNER JOIN `employee` AS e ON d.`empid`=e.`empid` 
+INNER JOIN `department` AS de ON e.`deid`=de.`departmentid` 
+INNER JOIN `post` AS p ON p.`postid`=e.`poid`
+where 1=1
+	          <if test="empname!='null'">
+	          	and e.empname  LIKE '%${empname}%'
+	          </if>
+  </select>
+  
+    <select id="selectDimissionVoo" resultType="com.accp.vo.lirui.DimissionVo">
+SELECT  de.`departmentname`,e.`empid`,e.`empname`,e.`empsex`,p.`postname`,d.`dimissiontime`,d.`dimissioncause` FROM `dimission` AS d 
+INNER JOIN `employee` AS e ON d.`empid`=e.`empid` 
+INNER JOIN `department` AS de ON e.`deid`=de.`departmentid` 
+INNER JOIN `post` AS p ON p.`postid`=e.`poid`
+
+  </select>
+  
+  <select id="selectEmpName" resultType="com.accp.pojo.lirui.Emp">
+       SELECT * FROM `employee`
+  
+  </select>
+  
+    <insert id="addDimission" >
+    insert into dimission (dimissionid,dimissiontime, dimissioncause,empid)
+    values (#{record.dimissionid},#{record.dimissiontime}, #{record.dimissioncause},#{record.empid})
+  </insert>
+  
+  <select id="selectEmpId" resultType="com.accp.vo.lirui.EmpVo">
+SELECT e.`empid`,e.`empname`,e.`empsex`,e.`emptype`,e.`empcondition`,e.`empheight`,e.`empeducation`,e.`empschool`,e.`empprofession`,e.`empcard`,e.`empaddress`,e.`emptelephone`,e.`empemail`,e.`empentrytime`,e.`empbirthtime`,e.`empreferrer`, s.`shopname`,de.`departmentname`,pa.payrollname,po.postname 
+FROM `employee` AS e INNER JOIN `shop` AS s ON e.`shid`=s.`shopid`
+INNER JOIN `department` de ON e.`deid`=de.`departmentid`
+INNER JOIN `payroll` AS pa ON e.`paid`=pa.`payrollid`
+INNER JOIN `post`  AS po ON e.`poid`=po.`postid`
+WHERE e.`empid`=#{empid}
+  </select>
+  
+  <delete id="deleteEmpId">
+     
+     DELETE FROM `employee` WHERE empid=#{empid}
+  
+  </delete>
+  
+  <delete id="deleteDimissionId">
+     
+     delete from `dimission` where empid=#{empid}
+     
+  </delete>
+  
+  <select id="selectCommunication" resultType="com.accp.vo.lirui.CommunicationVo">
+  		   
+  		   SELECT de.`departmentname`,e.`empid`,e.`empname`,e.`emptelephone`,e.`empemail` FROM `employee` AS e 
+  		   INNER JOIN `department` AS de ON e.`deid`=de.`departmentid`
+  		  where 1=1
+	          <if test="empname!='null'">
+	          	and empname  LIKE '%${empname}%'
+	          </if>
+	         
+	          
+	          
+          
+  		   
+  </select>
+  
+    <select id="selectCommun" resultType="com.accp.vo.lirui.CommunicationVo">
+  		   
+  		   SELECT de.`departmentname`,e.`empid`,e.`empname`,e.`emptelephone`,e.`empemail` FROM `employee` AS e 
+  		   INNER JOIN `department` AS de ON e.`deid`=de.`departmentid`
+
+  </select>
+  
+   <select id="selectById" resultType="com.accp.vo.lirui.CommunicationVo">
+      
+      SELECT de.`departmentname`,e.`empid`,e.`empname`,e.`emptelephone`,e.`empemail` FROM `employee` AS e INNER JOIN `department` AS de ON e.`deid`=de.`departmentid`
+     where  e.`empid`=#{empid}
+       
+   </select>
+   
+   
+   <update id="updateEmp" parameterType="com.accp.pojo.lirui.Emp" >
+    update employee 
+    <set >
+      <if test="empname != null" >
+        empname = #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="empsex != null" >
+        empsex = #{empsex,jdbcType=VARCHAR},
+      </if>
+      <if test="emptype != null" >
+        emptype = #{emptype,jdbcType=VARCHAR},
+      </if>
+      <if test="empcondition != null" >
+        empcondition = #{empcondition,jdbcType=VARCHAR},
+      </if>
+      <if test="empheight != null" >
+        empheight = #{empheight,jdbcType=VARCHAR},
+      </if>
+      <if test="empeducation != null" >
+        empeducation = #{empeducation,jdbcType=VARCHAR},
+      </if>
+      <if test="empschool != null" >
+        empschool = #{empschool,jdbcType=VARCHAR},
+      </if>
+      <if test="empprofession != null" >
+        empprofession = #{empprofession,jdbcType=VARCHAR},
+      </if>
+      <if test="empcard != null" >
+        empcard = #{empcard,jdbcType=VARCHAR},
+      </if>
+      <if test="empaddress != null" >
+        empaddress = #{empaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="emptelephone != null" >
+        emptelephone = #{emptelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="empemail != null" >
+        empemail = #{empemail,jdbcType=VARCHAR},
+      </if>
+      <if test="empentrytime != null" >
+        empentrytime = #{empentrytime,jdbcType=DATE},
+      </if>
+      <if test="empbirthtime != null" >
+        empbirthtime = #{empbirthtime,jdbcType=DATE},
+      </if>
+      <if test="empreferrer != null" >
+        empreferrer = #{empreferrer,jdbcType=VARCHAR},
+      </if>
+      <if test="shid != null" >
+        shid = #{shid,jdbcType=VARCHAR},
+      </if>
+      <if test="deid != null" >
+        deid = #{deid,jdbcType=VARCHAR},
+      </if>
+      <if test="paid != null" >
+        paid = #{paid,jdbcType=VARCHAR},
+      </if>
+      <if test="poid != null" >
+        poid = #{poid,jdbcType=VARCHAR},
+      </if>
+      
+    </set>
+    where empid = #{empid,jdbcType=VARCHAR}
+  </update>
+  		
+  	
+  
 </mapper>

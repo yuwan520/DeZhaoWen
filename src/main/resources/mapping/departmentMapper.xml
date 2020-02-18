@@ -55,4 +55,12 @@
     set departmentname = #{departmentname,jdbcType=VARCHAR}
     where departmentid = #{departmentid,jdbcType=VARCHAR}
   </update>
+  
+   <select id="selectName" resultType="com.accp.pojo.department">
+     
+      select * from department
+     
+   </select>
+  
+  
 </mapper>

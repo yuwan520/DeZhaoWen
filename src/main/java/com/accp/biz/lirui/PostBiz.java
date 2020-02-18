@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.accp.dao.postMapper;
+import com.accp.dao.lirui.postMapper;
 import com.accp.pojo.post;
 
 @Service("biz")
@@ -40,6 +40,18 @@ public class PostBiz {
 	public void delete(String postid) {
 		biz.deleteByPrimaryKey(postid);
 		
+	}
+	/**
+	 * 查询id
+	 * */
+	public post selectPostID(String postid){
+		post  list=biz.selectPostId(postid);
+		return list;
+		
+	}
+	public void updatePost(post record) {
+		
+		biz.updatePost(record);
 	}
 	
 }

@@ -20,4 +20,19 @@ public class shop {
     public void setShopname(String shopname) {
         this.shopname = shopname == null ? null : shopname.trim();
     }
+
+	@Override
+	public String toString() {
+		return "shop [shopid=" + shopid + ", shopname=" + shopname + "]";
+	}
+
+	public shop(String shopid, String shopname) {
+		super();
+		this.shopid = shopid;
+		this.shopname = shopname;
+	}
+
+	public shop() {
+		super();
+	}
 }

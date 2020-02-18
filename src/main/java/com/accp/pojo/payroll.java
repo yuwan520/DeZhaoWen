@@ -20,4 +20,19 @@ public class payroll {
     public void setPayrollname(String payrollname) {
         this.payrollname = payrollname == null ? null : payrollname.trim();
     }
+
+	public payroll(String payrollid, String payrollname) {
+		super();
+		this.payrollid = payrollid;
+		this.payrollname = payrollname;
+	}
+
+	public payroll() {
+		super();
+	}
+
+	@Override
+	public String toString() {
+		return "payroll [payrollid=" + payrollid + ", payrollname=" + payrollname + "]";
+	}
 }

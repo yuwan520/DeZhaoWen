@@ -20,4 +20,19 @@ public class department {
     public void setDepartmentname(String departmentname) {
         this.departmentname = departmentname == null ? null : departmentname.trim();
     }
+
+	public department(String departmentid, String departmentname) {
+		super();
+		this.departmentid = departmentid;
+		this.departmentname = departmentname;
+	}
+
+	public department() {
+		super();
+	}
+
+	@Override
+	public String toString() {
+		return "department [departmentid=" + departmentid + ", departmentname=" + departmentname + "]";
+	}
 }
