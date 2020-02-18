@@ -9,11 +9,11 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.lirui.employeeMapper;
-import com.accp.pojo.department;
-import com.accp.pojo.payroll;
-import com.accp.pojo.post;
-import com.accp.pojo.shop;
 import com.accp.pojo.lirui.Emp;
+import com.accp.pojo.lirui.department;
+import com.accp.pojo.lirui.payroll;
+import com.accp.pojo.lirui.post;
+import com.accp.pojo.lirui.shop;
 import com.accp.vo.lirui.CommunicationVo;
 import com.accp.vo.lirui.EmpVo;
 import com.github.pagehelper.PageHelper;

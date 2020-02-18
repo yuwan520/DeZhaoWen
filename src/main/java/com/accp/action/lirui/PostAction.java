@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.lirui.PostBiz;
-import com.accp.pojo.post;
+import com.accp.pojo.lirui.post;
 
 @RestController
 @RequestMapping("/api/posts")

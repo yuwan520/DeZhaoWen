@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.lirui.DepartmentBiz;
-import com.accp.pojo.department;
+import com.accp.pojo.lirui.department;
 import com.accp.vo.lirui.DimissionVo;
 
 @RestController

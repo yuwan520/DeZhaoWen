@@ -2,7 +2,7 @@ package com.accp.dao.lirui;
 
 import java.util.List;
 
-import com.accp.pojo.department;
+import com.accp.pojo.lirui.department;
 
 public interface departmentMapper {
     int deleteByPrimaryKey(String departmentid);

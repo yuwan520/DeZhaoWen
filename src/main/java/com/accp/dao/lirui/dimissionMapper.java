@@ -6,9 +6,9 @@ import org.apache.ibatis.annotations.Param;
 
 import com.accp.pojo.dimission;
 import com.accp.pojo.employee;
-import com.accp.pojo.post;
 import com.accp.pojo.lirui.Dimss;
 import com.accp.pojo.lirui.Emp;
+import com.accp.pojo.lirui.post;
 import com.accp.vo.lirui.DimissionVo;
 import com.accp.vo.lirui.EmpVo;
 import com.accp.vo.lirui.CommunicationVo;

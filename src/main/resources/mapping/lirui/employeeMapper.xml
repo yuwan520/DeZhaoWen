@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.lirui.employeeMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.employee" >
+    <id column="empid" property="empid" jdbcType="VARCHAR" />
+    <result column="empname" property="empname" jdbcType="VARCHAR" />
+    <result column="empsex" property="empsex" jdbcType="VARCHAR" />
+    <result column="emptype" property="emptype" jdbcType="VARCHAR" />
+    <result column="empcondition" property="empcondition" jdbcType="VARCHAR" />
+    <result column="empheight" property="empheight" jdbcType="VARCHAR" />
+    <result column="empeducation" property="empeducation" jdbcType="VARCHAR" />
+    <result column="empschool" property="empschool" jdbcType="VARCHAR" />
+    <result column="empprofession" property="empprofession" jdbcType="VARCHAR" />
+    <result column="empcard" property="empcard" jdbcType="VARCHAR" />
+    <result column="empaddress" property="empaddress" jdbcType="VARCHAR" />
+    <result column="emptelephone" property="emptelephone" jdbcType="VARCHAR" />
+    <result column="empemail" property="empemail" jdbcType="VARCHAR" />
+    <result column="empentrytime" property="empentrytime" jdbcType="DATE" />
+    <result column="empbirthtime" property="empbirthtime" jdbcType="DATE" />
+    <result column="empreferrer" property="empreferrer" jdbcType="VARCHAR" />
+    <result column="shid" property="shid" jdbcType="VARCHAR" />
+    <result column="deid" property="deid" jdbcType="VARCHAR" />
+    <result column="paid" property="paid" jdbcType="VARCHAR" />
+    <result column="poid" property="poid" jdbcType="VARCHAR" />
+    <result column="diid" property="diid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    empid, empname, empsex, emptype, empcondition, empheight, empeducation, empschool, 
+    empprofession, empcard, empaddress, emptelephone, empemail, empentrytime, empbirthtime, 
+    empreferrer, shid, deid, paid, poid, diid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from employee
+    where empid = #{empid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteEmpid">
+    delete from employee
+    where empid = #{empid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.accp.pojo.employee" >
+    insert into employee (empid, empname, empsex, 
+      emptype, empcondition, empheight, 
+      empeducation, empschool, empprofession, 
+      empcard, empaddress, emptelephone, 
+      empemail, empentrytime, empbirthtime, 
+      empreferrer, shid, deid, 
+      paid, poid, diid)
+    values (#{empid,jdbcType=VARCHAR}, #{empname,jdbcType=VARCHAR}, #{empsex,jdbcType=VARCHAR}, 
+      #{emptype,jdbcType=VARCHAR}, #{empcondition,jdbcType=VARCHAR}, #{empheight,jdbcType=VARCHAR}, 
+      #{empeducation,jdbcType=VARCHAR}, #{empschool,jdbcType=VARCHAR}, #{empprofession,jdbcType=VARCHAR}, 
+      #{empcard,jdbcType=VARCHAR}, #{empaddress,jdbcType=VARCHAR}, #{emptelephone,jdbcType=VARCHAR}, 
+      #{empemail,jdbcType=VARCHAR}, #{empentrytime,jdbcType=DATE}, #{empbirthtime,jdbcType=DATE}, 
+      #{empreferrer,jdbcType=VARCHAR}, #{shid,jdbcType=VARCHAR}, #{deid,jdbcType=VARCHAR}, 
+      #{paid,jdbcType=VARCHAR}, #{poid,jdbcType=VARCHAR}, #{diid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.pojo.employee" >
+    insert into employee
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="empid != null" >
+        empid,
+      </if>
+      <if test="empname != null" >
+        empname,
+      </if>
+      <if test="empsex != null" >
+        empsex,
+      </if>
+      <if test="emptype != null" >
+        emptype,
+      </if>
+      <if test="empcondition != null" >
+        empcondition,
+      </if>
+      <if test="empheight != null" >
+        empheight,
+      </if>
+      <if test="empeducation != null" >
+        empeducation,
+      </if>
+      <if test="empschool != null" >
+        empschool,
+      </if>
+      <if test="empprofession != null" >
+        empprofession,
+      </if>
+      <if test="empcard != null" >
+        empcard,
+      </if>
+      <if test="empaddress != null" >
+        empaddress,
+      </if>
+      <if test="emptelephone != null" >
+        emptelephone,
+      </if>
+      <if test="empemail != null" >
+        empemail,
+      </if>
+      <if test="empentrytime != null" >
+        empentrytime,
+      </if>
+      <if test="empbirthtime != null" >
+        empbirthtime,
+      </if>
+      <if test="empreferrer != null" >
+        empreferrer,
+      </if>
+      <if test="shid != null" >
+        shid,
+      </if>
+      <if test="deid != null" >
+        deid,
+      </if>
+      <if test="paid != null" >
+        paid,
+      </if>
+      <if test="poid != null" >
+        poid,
+      </if>
+      <if test="diid != null" >
+        diid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="empid != null" >
+        #{empid,jdbcType=VARCHAR},
+      </if>
+      <if test="empname != null" >
+        #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="empsex != null" >
+        #{empsex,jdbcType=VARCHAR},
+      </if>
+      <if test="emptype != null" >
+        #{emptype,jdbcType=VARCHAR},
+      </if>
+      <if test="empcondition != null" >
+        #{empcondition,jdbcType=VARCHAR},
+      </if>
+      <if test="empheight != null" >
+        #{empheight,jdbcType=VARCHAR},
+      </if>
+      <if test="empeducation != null" >
+        #{empeducation,jdbcType=VARCHAR},
+      </if>
+      <if test="empschool != null" >
+        #{empschool,jdbcType=VARCHAR},
+      </if>
+      <if test="empprofession != null" >
+        #{empprofession,jdbcType=VARCHAR},
+      </if>
+      <if test="empcard != null" >
+        #{empcard,jdbcType=VARCHAR},
+      </if>
+      <if test="empaddress != null" >
+        #{empaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="emptelephone != null" >
+        #{emptelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="empemail != null" >
+        #{empemail,jdbcType=VARCHAR},
+      </if>
+      <if test="empentrytime != null" >
+        #{empentrytime,jdbcType=DATE},
+      </if>
+      <if test="empbirthtime != null" >
+        #{empbirthtime,jdbcType=DATE},
+      </if>
+      <if test="empreferrer != null" >
+        #{empreferrer,jdbcType=VARCHAR},
+      </if>
+      <if test="shid != null" >
+        #{shid,jdbcType=VARCHAR},
+      </if>
+      <if test="deid != null" >
+        #{deid,jdbcType=VARCHAR},
+      </if>
+      <if test="paid != null" >
+        #{paid,jdbcType=VARCHAR},
+      </if>
+      <if test="poid != null" >
+        #{poid,jdbcType=VARCHAR},
+      </if>
+      <if test="diid != null" >
+        #{diid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.employee" >
+    update employee
+    <set >
+      <if test="empname != null" >
+        empname = #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="empsex != null" >
+        empsex = #{empsex,jdbcType=VARCHAR},
+      </if>
+      <if test="emptype != null" >
+        emptype = #{emptype,jdbcType=VARCHAR},
+      </if>
+      <if test="empcondition != null" >
+        empcondition = #{empcondition,jdbcType=VARCHAR},
+      </if>
+      <if test="empheight != null" >
+        empheight = #{empheight,jdbcType=VARCHAR},
+      </if>
+      <if test="empeducation != null" >
+        empeducation = #{empeducation,jdbcType=VARCHAR},
+      </if>
+      <if test="empschool != null" >
+        empschool = #{empschool,jdbcType=VARCHAR},
+      </if>
+      <if test="empprofession != null" >
+        empprofession = #{empprofession,jdbcType=VARCHAR},
+      </if>
+      <if test="empcard != null" >
+        empcard = #{empcard,jdbcType=VARCHAR},
+      </if>
+      <if test="empaddress != null" >
+        empaddress = #{empaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="emptelephone != null" >
+        emptelephone = #{emptelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="empemail != null" >
+        empemail = #{empemail,jdbcType=VARCHAR},
+      </if>
+      <if test="empentrytime != null" >
+        empentrytime = #{empentrytime,jdbcType=DATE},
+      </if>
+      <if test="empbirthtime != null" >
+        empbirthtime = #{empbirthtime,jdbcType=DATE},
+      </if>
+      <if test="empreferrer != null" >
+        empreferrer = #{empreferrer,jdbcType=VARCHAR},
+      </if>
+      <if test="shid != null" >
+        shid = #{shid,jdbcType=VARCHAR},
+      </if>
+      <if test="deid != null" >
+        deid = #{deid,jdbcType=VARCHAR},
+      </if>
+      <if test="paid != null" >
+        paid = #{paid,jdbcType=VARCHAR},
+      </if>
+      <if test="poid != null" >
+        poid = #{poid,jdbcType=VARCHAR},
+      </if>
+      <if test="diid != null" >
+        diid = #{diid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where empid = #{empid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.employee" >
+    update employee
+    set empname = #{empname,jdbcType=VARCHAR},
+      empsex = #{empsex,jdbcType=VARCHAR},
+      emptype = #{emptype,jdbcType=VARCHAR},
+      empcondition = #{empcondition,jdbcType=VARCHAR},
+      empheight = #{empheight,jdbcType=VARCHAR},
+      empeducation = #{empeducation,jdbcType=VARCHAR},
+      empschool = #{empschool,jdbcType=VARCHAR},
+      empprofession = #{empprofession,jdbcType=VARCHAR},
+      empcard = #{empcard,jdbcType=VARCHAR},
+      empaddress = #{empaddress,jdbcType=VARCHAR},
+      emptelephone = #{emptelephone,jdbcType=VARCHAR},
+      empemail = #{empemail,jdbcType=VARCHAR},
+      empentrytime = #{empentrytime,jdbcType=DATE},
+      empbirthtime = #{empbirthtime,jdbcType=DATE},
+      empreferrer = #{empreferrer,jdbcType=VARCHAR},
+      shid = #{shid,jdbcType=VARCHAR},
+      deid = #{deid,jdbcType=VARCHAR},
+      paid = #{paid,jdbcType=VARCHAR},
+      poid = #{poid,jdbcType=VARCHAR},
+      diid = #{diid,jdbcType=VARCHAR}
+    where empid = #{empid,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="selectEmptNameId" resultType="com.accp.vo.lirui.EmpVo">
+  
+    SELECT e.`empid`,e.`empname`,e.`empsex`,e.`emptype`,e.`empcondition`,e.`empheight`,e.`empeducation`,e.`empschool`,e.`empprofession`,e.`empcard`,e.`empaddress`,e.`emptelephone`,e.`empemail`,e.`empentrytime`,e.`empbirthtime`,e.`empreferrer`, s.`shopname`,de.`departmentname`,pa.payrollname,po.postname 
+FROM `employee` AS e INNER JOIN `shop` AS s ON e.`shid`=s.`shopid`
+INNER JOIN `department` de ON e.`deid`=de.`departmentid`
+INNER JOIN `payroll` AS pa ON e.`paid`=pa.`payrollid`
+INNER JOIN `post`  AS po ON e.`poid`=po.`postid`
+where 1=1
+	          <if test="empname!='null'">
+	          	and empname  LIKE '%${empname}%'
+	          </if>
+	         
+	         
+    
+    
+  </select>
+  
+  <select id="selectEmpAll" resultType="com.accp.vo.lirui.EmpVo">
+   SELECT e.`empid`,e.`empname`,e.`empsex`,e.`emptype`,e.`empcondition`,e.`empheight`,e.`empeducation`,e.`empschool`,e.`empprofession`,e.`empcard`,e.`empaddress`,e.`emptelephone`,e.`empemail`,e.`empentrytime`,e.`empbirthtime`,e.`empreferrer`, s.`shopname`,de.`departmentname`,pa.payrollname,po.postname 
+FROM `employee` AS e INNER JOIN `shop` AS s ON e.`shid`=s.`shopid`
+INNER JOIN `department` de ON e.`deid`=de.`departmentid`
+INNER JOIN `payroll` AS pa ON e.`paid`=pa.`payrollid`
+INNER JOIN `post`  AS po ON e.`poid`=po.`postid`
+
+  </select>
+  
+  <select id="selectDepartmentName" resultType="com.accp.vo.lirui.EmpVo">
+     SELECT e.`empid`,e.`empname`,e.`empsex`,e.`emptype`,e.`empcondition`,e.`empheight`,e.`empeducation`,e.`empschool`,e.`empprofession`,e.`empcard`,e.`empaddress`,e.`emptelephone`,e.`empemail`,e.`empentrytime`,e.`empbirthtime`,e.`empreferrer`, s.`shopname`,de.`departmentname`,pa.payrollname,po.postname 
+FROM `employee` AS e INNER JOIN `shop` AS s ON e.`shid`=s.`shopid`
+INNER JOIN `department` de ON e.`deid`=de.`departmentid`
+INNER JOIN `payroll` AS pa ON e.`paid`=pa.`payrollid`
+INNER JOIN `post`  AS po ON e.`poid`=po.`postid`
+WHERE de.`departmentid`=#{departmentid}
+
+  </select>
+  
+  <select id="selectShopname" resultType="com.accp.pojo.lirui.shop">
+        SELECT * FROM shop
+  
+  </select>
+  
+  <select id="selectPayroll" resultType="com.accp.pojo.lirui.payroll">
+      SELECT * FROM `payroll`
+  </select>
+  
+  <select id="selectPost" resultType="com.accp.pojo.lirui.post">
+     select * from post
+  </select>
+  
+  <select id="selectDepartment" resultType="com.accp.pojo.lirui.department">
+    select * from department
+  </select>
+  
+    <insert id="addEmp" parameterType="com.accp.pojo.lirui.Emp" >
+    insert into employee
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="empid != null" >
+        empid,
+      </if>
+      <if test="empname != null" >
+        empname,
+      </if>
+      <if test="empsex != null" >
+        empsex,
+      </if>
+      <if test="emptype != null" >
+        emptype,
+      </if>
+      <if test="empcondition != null" >
+        empcondition,
+      </if>
+      <if test="empheight != null" >
+        empheight,
+      </if>
+      <if test="empeducation != null" >
+        empeducation,
+      </if>
+      <if test="empschool != null" >
+        empschool,
+      </if>
+      <if test="empprofession != null" >
+        empprofession,
+      </if>
+      <if test="empcard != null" >
+        empcard,
+      </if>
+      <if test="empaddress != null" >
+        empaddress,
+      </if>
+      <if test="emptelephone != null" >
+        emptelephone,
+      </if>
+      <if test="empemail != null" >
+        empemail,
+      </if>
+      <if test="empentrytime != null" >
+        empentrytime,
+      </if>
+      <if test="empbirthtime != null" >
+        empbirthtime,
+      </if>
+      <if test="empreferrer != null" >
+        empreferrer,
+      </if>
+      <if test="shid != null" >
+        shid,
+      </if>
+      <if test="deid != null" >
+        deid,
+      </if>
+      <if test="paid != null" >
+        paid,
+      </if>
+      <if test="poid != null" >
+        poid,
+      </if>
+     
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="empid != null" >
+        #{empid,jdbcType=VARCHAR},
+      </if>
+      <if test="empname != null" >
+        #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="empsex != null" >
+        #{empsex,jdbcType=VARCHAR},
+      </if>
+      <if test="emptype != null" >
+        #{emptype,jdbcType=VARCHAR},
+      </if>
+      <if test="empcondition != null" >
+        #{empcondition,jdbcType=VARCHAR},
+      </if>
+      <if test="empheight != null" >
+        #{empheight,jdbcType=VARCHAR},
+      </if>
+      <if test="empeducation != null" >
+        #{empeducation,jdbcType=VARCHAR},
+      </if>
+      <if test="empschool != null" >
+        #{empschool,jdbcType=VARCHAR},
+      </if>
+      <if test="empprofession != null" >
+        #{empprofession,jdbcType=VARCHAR},
+      </if>
+      <if test="empcard != null" >
+        #{empcard,jdbcType=VARCHAR},
+      </if>
+      <if test="empaddress != null" >
+        #{empaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="emptelephone != null" >
+        #{emptelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="empemail != null" >
+        #{empemail,jdbcType=VARCHAR},
+      </if>
+      <if test="empentrytime != null" >
+        #{empentrytime,jdbcType=DATE},
+      </if>
+      <if test="empbirthtime != null" >
+        #{empbirthtime,jdbcType=DATE},
+      </if>
+      <if test="empreferrer != null" >
+        #{empreferrer,jdbcType=VARCHAR},
+      </if>
+      <if test="shid != null" >
+        #{shid,jdbcType=VARCHAR},
+      </if>
+      <if test="deid != null" >
+        #{deid,jdbcType=VARCHAR},
+      </if>
+      <if test="paid != null" >
+        #{paid,jdbcType=VARCHAR},
+      </if>
+      <if test="poid != null" >
+        #{poid,jdbcType=VARCHAR},
+      </if>
+      
+    </trim>
+  </insert>
+  
+  <select id="selectEmpId" resultType="com.accp.pojo.lirui.Emp">
+SELECT * FROM employee WHERE empid=#{empid}
+  </select>
+  
+  <update id="updateEmployee" parameterType="com.accp.pojo.lirui.Emp" >
+    update employee 
+    <set >
+      <if test="empname != null" >
+        empname = #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="empsex != null" >
+        empsex = #{empsex,jdbcType=VARCHAR},
+      </if>
+      <if test="emptype != null" >
+        emptype = #{emptype,jdbcType=VARCHAR},
+      </if>
+      <if test="empcondition != null" >
+        empcondition = #{empcondition,jdbcType=VARCHAR},
+      </if>
+      <if test="empheight != null" >
+        empheight = #{empheight,jdbcType=VARCHAR},
+      </if>
+      <if test="empeducation != null" >
+        empeducation = #{empeducation,jdbcType=VARCHAR},
+      </if>
+      <if test="empschool != null" >
+        empschool = #{empschool,jdbcType=VARCHAR},
+      </if>
+      <if test="empprofession != null" >
+        empprofession = #{empprofession,jdbcType=VARCHAR},
+      </if>
+      <if test="empcard != null" >
+        empcard = #{empcard,jdbcType=VARCHAR},
+      </if>
+      <if test="empaddress != null" >
+        empaddress = #{empaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="emptelephone != null" >
+        emptelephone = #{emptelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="empemail != null" >
+        empemail = #{empemail,jdbcType=VARCHAR},
+      </if>
+      <if test="empentrytime != null" >
+        empentrytime = #{empentrytime,jdbcType=DATE},
+      </if>
+      <if test="empbirthtime != null" >
+        empbirthtime = #{empbirthtime,jdbcType=DATE},
+      </if>
+      <if test="empreferrer != null" >
+        empreferrer = #{empreferrer,jdbcType=VARCHAR},
+      </if>
+      <if test="shid != null" >
+        shid = #{shid,jdbcType=VARCHAR},
+      </if>
+      <if test="deid != null" >
+        deid = #{deid,jdbcType=VARCHAR},
+      </if>
+      <if test="paid != null" >
+        paid = #{paid,jdbcType=VARCHAR},
+      </if>
+      <if test="poid != null" >
+        poid = #{poid,jdbcType=VARCHAR},
+      </if>
+      
+    </set>
+    where empid = #{empid,jdbcType=VARCHAR}
+  </update>
+</mapper>

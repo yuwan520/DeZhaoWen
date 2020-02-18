@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.lirui.departmentMapper;
-import com.accp.pojo.department;
+import com.accp.pojo.lirui.department;
 
 @Service("DepartmentBiz")
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true)

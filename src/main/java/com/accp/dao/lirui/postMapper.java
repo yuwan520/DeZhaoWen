@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.accp.pojo.post;
+import com.accp.pojo.lirui.post;
 
 public interface postMapper {
     int deleteByPrimaryKey(String postid);
