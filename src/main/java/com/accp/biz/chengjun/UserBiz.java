@@ -6,8 +6,8 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.accp.dao.IUserDao;
-import com.accp.pojo.User;
+import com.accp.dao.chengjun.IUserDao;
+import com.accp.pojo.chengjun.User;
 
 @Service("userBiz")
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true)

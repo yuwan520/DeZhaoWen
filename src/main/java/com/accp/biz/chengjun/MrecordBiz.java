@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.accp.dao.mrecordMapper;
+import com.accp.dao.chengjun.mrecordMapper;
 import com.accp.vo.chengjun.JieSuanVo;
 import com.accp.vo.chengjun.JieSuanVo1;
 

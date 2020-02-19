@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.chengjun.VipBiz;
-import com.accp.pojo.vehicle;
-import com.accp.pojo.vip;
+import com.accp.pojo.chengjun.vehicle;
+import com.accp.pojo.chengjun.vip;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 

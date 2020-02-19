@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.chengjun.UserBiz;
-import com.accp.pojo.Function;
-import com.accp.pojo.User;
+import com.accp.pojo.chengjun.Function;
+import com.accp.pojo.chengjun.User;
 
 @SuppressWarnings("all")
 @RestController

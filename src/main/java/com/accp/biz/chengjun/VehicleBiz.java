@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.accp.dao.vehicleMapper;
-import com.accp.pojo.vehicle;
+import com.accp.dao.chengjun.vehicleMapper;
+import com.accp.pojo.chengjun.vehicle;
 
 @Service("VehicleBiz")
 public class VehicleBiz {

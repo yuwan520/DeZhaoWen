@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.chengjun.ClientBiz;
-import com.accp.pojo.client;
+import com.accp.pojo.chengjun.client;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 

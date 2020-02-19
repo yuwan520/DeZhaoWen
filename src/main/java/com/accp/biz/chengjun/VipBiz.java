@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.accp.dao.vipMapper;
-import com.accp.pojo.vip;
+import com.accp.dao.chengjun.vipMapper;
+import com.accp.pojo.chengjun.vip;
 
 @Service("VipBiz")
 public class VipBiz {

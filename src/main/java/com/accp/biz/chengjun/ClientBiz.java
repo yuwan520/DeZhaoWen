@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.accp.dao.clientMapper;
-import com.accp.pojo.client;
+import com.accp.dao.chengjun.clientMapper;
+import com.accp.pojo.chengjun.client;
 
 @Service("ClientBiz")
 public class ClientBiz {
