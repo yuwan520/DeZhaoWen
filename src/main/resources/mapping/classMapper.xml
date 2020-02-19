@@ -6,12 +6,28 @@
     <result column="classname" property="classname" jdbcType="VARCHAR" />
     <result column="weight" property="weight" jdbcType="INTEGER" />
   </resultMap>
-  <insert id="insert" parameterType="com.accp.pojo.class1" >
+  
+  <select id="selectAll" resultType="com.accp.pojo.class1">
+  	select * from class
+  </select>
+  
+  <delete id="delete">
+  	delete from class where classno=#{classno}
+  </delete>
+  
+  <insert id="insert">
+  	insert into class (classno,classname,weight) values (#{record.classno},#{record.classname},#{record.weight})
+  </insert>
+  
+  
+<!--   <insert id="insert" parameterType="com.accp.pojo.class1" >
     insert into class (classno, classname, weight
       )
     values (#{classno,jdbcType=INTEGER}, #{classname,jdbcType=VARCHAR}, #{weight,jdbcType=INTEGER}
       )
   </insert>
+   -->
+  
   <insert id="insertSelective" parameterType="com.accp.pojo.class1" >
     insert into class
     <trim prefix="(" suffix=")" suffixOverrides="," >

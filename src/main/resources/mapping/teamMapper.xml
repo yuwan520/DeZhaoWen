@@ -25,12 +25,26 @@
 		ON `team`.`teamno`=`car`.`teamno`
 	</select>
 
+	<select id="selectTeamAll" resultType="com.accp.pojo.team">
+		select * from team
+	</select>
+
+	<delete id="deleteByTeamNo">
+		delete from team where teamno=#{teamno}
+	</delete>
+
+	<insert id="insert">
+		insert into
+		team(teamno,teamname,number,artname,sex,phone,site,logname,idcard,classno,typeg,brands)
+		values(#{record.teamno},#{record.teamname},#{record.number},#{record.artname},#{record.sex},#{record.phone},#{record.site},#{record.logname},#{record.idcard},#{record.classno},#{record.typeg},#{record.brands})
+	</insert>
+
 	<delete id="deleteByNumbercar">
 		delete from car where numbercar=#{numbercar}
 	</delete>
 
 
-	<insert id="insert" parameterType="com.accp.pojo.team">
+	<!-- <insert id="insert" parameterType="com.accp.pojo.team">
 		insert into team (teamno,
 		teamname, number,
 		artname, sex, phone,
@@ -49,7 +63,7 @@
 		#{classno,jdbcType=INTEGER}, #{typeg,jdbcType=VARCHAR},
 		#{brands,jdbcType=VARCHAR}
 		)
-	</insert>
+	</insert> -->
 	<insert id="insertSelective" parameterType="com.accp.pojo.team">
 		insert into team
 		<trim prefix="(" suffix=")" suffixOverrides=",">

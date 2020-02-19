@@ -1,43 +1,48 @@
 package com.accp.biz.yupengcheng;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.accp.dao.carMapper;
 import com.accp.dao.teamMapper;
-import com.accp.pojo.car;
+import com.accp.pojo.class1;
+import com.accp.pojo.team;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
 @Service
-public class CarBiz {
-	
+public class TeamBiz {
+
 	@Autowired
-	private carMapper carmap;
-	@Autowired
-	private teamMapper teamap;
+	private teamMapper teammap;
 	
 	//分页查询
-	public PageInfo<car> queryAll(int num, String bm){
-		PageHelper.startPage(num, 4);
-		PageInfo<car> page=new PageInfo<>(teamap.selectAll());
+	public PageInfo<team> queryAll(int num,String bm){
+		PageHelper.startPage(num, 3);
+		PageInfo<team> page=new PageInfo<>(teammap.selectTeamAll(bm));
 		return page;
 	}
 	
-	//删除
+	//新增技工
 	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
-	public int deleteByNum(String numbercar) {
-		int ak=carmap.deleteByNumbercar(numbercar);
+	public int insertAll(team record) {
+		int ak = teammap.insert(record);
 		return ak;
 	}
-	//新增
+	
+	//删除技工
 	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
-	public int insertAll(car record) {
-		int cs=carmap.insert(record);
+	public int deleteByTeamNo(int teamno) {
+		int cs = teammap.deleteByTeamNo(teamno);
 		return cs;
 	}
+	
+/*	//修改技工
+	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
+	public int updateByclassNo(int classno) {
+		int we = classmap.update(classno);
+		return we;
+	}*/
 }

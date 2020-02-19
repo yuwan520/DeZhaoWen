@@ -40,7 +40,7 @@ public class CarAction {
 		int c=carb.deleteByNum(carno);
 		return c>0?"ok":"false";
 	}
-	
+	//新增
 	@PostMapping("insert")
 	public String insertCarAll(@RequestBody car record) {
 		int cs=carb.insertAll(record);

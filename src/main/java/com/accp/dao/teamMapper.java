@@ -10,10 +10,14 @@ import com.accp.pojo.team;
 public interface teamMapper {
 
 	List<car> selectAll();
+	
+	List<team> selectTeamAll(@Param("bm") String bm);
+	
+	int deleteByTeamNo(@Param("teamno") int teamno);
 
 	int deleteByNumbercar(@Param("numbercar") String numbercar);
 
-	int insert(team record);
+	int insert(@Param("record")team record);
 
 	int insertSelective(team record);
 }

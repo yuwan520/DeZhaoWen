@@ -1,5 +1,6 @@
 package com.accp.biz.yupengcheng;
 
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -7,37 +8,43 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.accp.dao.carMapper;
-import com.accp.dao.teamMapper;
+import com.accp.dao.classMapper;
 import com.accp.pojo.car;
+import com.accp.pojo.class1;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
 @Service
-public class CarBiz {
-	
+public class classBiz {
+
 	@Autowired
-	private carMapper carmap;
-	@Autowired
-	private teamMapper teamap;
-	
-	//分页查询
-	public PageInfo<car> queryAll(int num, String bm){
+	private classMapper classmap;
+
+	// 分页查询
+	public PageInfo<class1> queryAll(int num, String bm) {
 		PageHelper.startPage(num, 4);
-		PageInfo<car> page=new PageInfo<>(teamap.selectAll());
+		PageInfo<class1> page = new PageInfo<>(classmap.selectAll());
 		return page;
 	}
-	
-	//删除
+
+	// 新增星级
 	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
-	public int deleteByNum(String numbercar) {
-		int ak=carmap.deleteByNumbercar(numbercar);
+	public int insertAll(class1 record) {
+		int ak = classmap.insert(record);
 		return ak;
 	}
-	//新增
+
+	// 删除星级
 	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
-	public int insertAll(car record) {
-		int cs=carmap.insert(record);
+	public int deleteByClassNo(int classno) {
+		int cs = classmap.delete(classno);
 		return cs;
+	}
+
+	// 修改星级
+	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
+	public int updateByclassNo(int classno) {
+		int we = classmap.update(classno);
+		return we;
 	}
 }
