@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.accp.dao.lirui.employeeMapper" >
-  <resultMap id="BaseResultMap" type="com.accp.pojo.employee" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.lirui.employee" >
     <id column="empid" property="empid" jdbcType="VARCHAR" />
     <result column="empname" property="empname" jdbcType="VARCHAR" />
     <result column="empsex" property="empsex" jdbcType="VARCHAR" />
@@ -39,7 +39,7 @@
     delete from employee
     where empid = #{empid,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.accp.pojo.employee" >
+  <insert id="insert" parameterType="com.accp.pojo.lirui.employee" >
     insert into employee (empid, empname, empsex, 
       emptype, empcondition, empheight, 
       empeducation, empschool, empprofession, 
@@ -55,7 +55,7 @@
       #{empreferrer,jdbcType=VARCHAR}, #{shid,jdbcType=VARCHAR}, #{deid,jdbcType=VARCHAR}, 
       #{paid,jdbcType=VARCHAR}, #{poid,jdbcType=VARCHAR}, #{diid,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.accp.pojo.employee" >
+  <insert id="insertSelective" parameterType="com.accp.pojo.lirui.employee" >
     insert into employee
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="empid != null" >
@@ -188,7 +188,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.employee" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.lirui.employee" >
     update employee
     <set >
       <if test="empname != null" >
@@ -254,7 +254,7 @@
     </set>
     where empid = #{empid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.employee" >
+  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.lirui.employee" >
     update employee
     set empname = #{empname,jdbcType=VARCHAR},
       empsex = #{empsex,jdbcType=VARCHAR},

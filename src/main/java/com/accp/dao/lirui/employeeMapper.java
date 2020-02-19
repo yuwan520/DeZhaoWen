@@ -4,12 +4,12 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.accp.pojo.employee;
-import com.accp.pojo.lirui.Emp;
 import com.accp.pojo.lirui.department;
+import com.accp.pojo.lirui.employee;
 import com.accp.pojo.lirui.payroll;
 import com.accp.pojo.lirui.post;
 import com.accp.pojo.lirui.shop;
+import com.accp.pojo.lirui.Emp;
 import com.accp.vo.lirui.EmpVo;
 
 public interface employeeMapper {

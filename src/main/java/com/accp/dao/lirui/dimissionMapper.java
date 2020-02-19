@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.accp.pojo.dimission;
-import com.accp.pojo.employee;
+import com.accp.pojo.lirui.dimission;
+import com.accp.pojo.lirui.employee;
 import com.accp.pojo.lirui.Dimss;
 import com.accp.pojo.lirui.Emp;
 import com.accp.pojo.lirui.post;

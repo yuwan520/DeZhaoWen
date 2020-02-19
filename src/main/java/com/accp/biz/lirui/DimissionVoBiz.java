@@ -9,8 +9,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.lirui.dimissionMapper;
-import com.accp.pojo.dimission;
-import com.accp.pojo.employee;
+import com.accp.pojo.lirui.dimission;
+import com.accp.pojo.lirui.employee;
 import com.accp.pojo.lirui.Dimss;
 import com.accp.pojo.lirui.Emp;
 import com.accp.vo.lirui.CommunicationVo;

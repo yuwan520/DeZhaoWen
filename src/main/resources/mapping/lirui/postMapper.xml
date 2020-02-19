@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.accp.dao.lirui.postMapper" >
+<mapper namespace="com.accp.dao.postMapper" >
   <resultMap id="BaseResultMap" type="com.accp.pojo.lirui.post" >
     <id column="postid" property="postid" jdbcType="VARCHAR" />
     <result column="postname" property="postname" jdbcType="VARCHAR" />
@@ -18,7 +18,7 @@
     delete from post
     where postid = #{postid,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.accp.pojo.post" >
+  <insert id="insert" parameterType="com.accp.pojo.lirui.post" >
     insert into post (postid, postname)
     values (#{postid,jdbcType=VARCHAR}, #{postname,jdbcType=VARCHAR})
   </insert>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.accp.dao.lirui.dimissionMapper" >
-  <resultMap id="BaseResultMap" type="com.accp.pojo.dimission" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.lirui.dimission" >
     <id column="dimissionid" property="dimissionid" jdbcType="VARCHAR" />
     <result column="dimissiontime" property="dimissiontime" jdbcType="DATE" />
     <result column="dimissioncause" property="dimissioncause" jdbcType="VARCHAR" />
@@ -20,13 +20,13 @@
     delete from dimission
     where dimissionid = #{dimissionid,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.accp.pojo.dimission" >
+  <insert id="insert" parameterType="com.accp.pojo.lirui.dimission" >
     insert into dimission (dimissionid, dimissiontime, dimissioncause, 
       dimissionname)
     values (#{dimissionid,jdbcType=VARCHAR}, #{dimissiontime,jdbcType=DATE}, #{dimissioncause,jdbcType=VARCHAR}, 
       #{dimissionname,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.accp.pojo.dimission" >
+  <insert id="insertSelective" parameterType="com.accp.pojo.lirui.dimission" >
     insert into dimission
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="dimissionid != null" >
@@ -57,7 +57,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.dimission" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.lirui.dimission" >
     update dimission
     <set >
       <if test="dimissiontime != null" >
@@ -72,7 +72,7 @@
     </set>
     where dimissionid = #{dimissionid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.dimission" >
+  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.lirui.dimission" >
     update dimission
     set dimissiontime = #{dimissiontime,jdbcType=DATE},
       dimissioncause = #{dimissioncause,jdbcType=VARCHAR},

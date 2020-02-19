@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.lirui.DimissionVoBiz;
 
-import com.accp.pojo.dimission;
-import com.accp.pojo.employee;
+import com.accp.pojo.lirui.dimission;
+import com.accp.pojo.lirui.employee;
 import com.accp.pojo.lirui.Dimss;
 import com.accp.pojo.lirui.Emp;
 import com.accp.pojo.lirui.post;
