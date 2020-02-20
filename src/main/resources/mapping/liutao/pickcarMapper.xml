@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.accp.dao.liutao.pickcarMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.liutao.pickcar" >
+    <id column="carNo" property="carno" jdbcType="VARCHAR" />
+    <result column="consultant" property="consultant" jdbcType="VARCHAR" />
+    <result column="driver" property="driver" jdbcType="VARCHAR" />
+    <result column="driverPhone" property="driverphone" jdbcType="VARCHAR" />
+    <result column="businessType" property="businesstype" jdbcType="VARCHAR" />
+    <result column="construction" property="construction" jdbcType="VARCHAR" />
+    <result column="pickOne" property="pickone" jdbcType="VARCHAR" />
+    <result column="expectedCompletion" property="expectedcompletion" jdbcType="TIMESTAMP" />
+    <result column="clearing" property="clearing" jdbcType="VARCHAR" />
+    <result column="estimated" property="estimated" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="repairs" property="repairs" jdbcType="VARCHAR" />
+    <result column="complterTime" property="complterTime" jdbcType="TIMESTAMP" />
+    <result column="wx" property="wx" jdbcType="VARCHAR"></result>
+    <collection property="maintains" ofType="maintains">
+      <result column="wxorders" property="wxorders"/>
+      <result column="xmname" property="itemName"/>
+      <result column="pricelei" property="pricelei"/>
+      <result column="num" property="num"/>
+      <result column="gztext" property="gztext"/>
+      <result column="gzcause" property="gzcause"/>
+      <result column="wxgroup" property="wxgroup"/>
+      <result column="xm_coding" property="coding"/>
+    </collection>
+    <collection property="mrecord" ofType="com.accp.pojo.liutao.mrecord">
+      <result column="carhno" property="carhno"/>
+      <result column="status1" property="status1"/>
+      <result column="btype" property="btype"/>
+      <result column="rorder" property="rorder"/>
+      <result column="ordertype" property="ordertype"/>
+      <result column="ordertime" property="ordertime"/>
+      <result column="colsing" property="colsing"/>
+    </collection>
+  </resultMap>
+  <insert id="addXcar">
+        <!--新增维修单据表-->
+            <if test="pickcar.mrecord!=null ">
+              INSERT INTO `mrecord`(carHno,`status`,btype,rorder,orderType,orderTime)
+              values (#{pickcar.carno},#{pickcar.mrecord.status1},#{pickcar.businesstype},#{pickcar.mrecord.rorder},#{pickcar.mrecord.ordertype},now());
+            </if>
+        <!--新增维修项目表-->
+            <if test="pickcar.maintains!=null ">
+              INSERT INTO `maintains`(wxorders,xmName,num,gzText,gzCause,wxgroup,xmCoding)
+            values
+              <foreach collection="pickcar.maintains" item="min" separator=",">
+                      (#{pickcar.mrecord.rorder},#{min.itemName},#{min.num},#{min.gztext},#{min.gzcause},#{min.wxgroup},#{min.coding})
+              </foreach>
+              ;
+            </if>
+        <!--新增维修接车表-->
+    INSERT INTO `pickcar`(carNo,consultant,driver,driverPhone,businessType,construction,pickOne,expectedCompletion,clearing,estimated,remark,repairs,wx)
+    values (#{pickcar.carno},#{pickcar.consultant},#{pickcar.driver},#{pickcar.driverphone},#{pickcar.businesstype},#{pickcar.construction},#{pickcar.pickone},DATE_ADD(NOW(),INTERVAL 2 HOUR),#{pickcar.clearing},#{pickcar.estimated},#{pickcar.remark},#{pickcar.repairs},#{pickcar.mrecord.rorder});
+  </insert>
+  <select id="queryVehicleInfo" resultType="com.accp.vo.liutao.vehicleInfo">
+    SELECT `status`,`btype`,`clientname`,`carHno`,`clientiphone`,`rorder`,`orderType`,`orderTime`,`expectedCompletion`,`complterTime`,`colsing`,`consultant` FROM `mrecord`
+    LEFT JOIN `pickcar` ON `mrecord`.`rorder`=`pickcar`.`wx`
+    LEFT JOIN `vehicle` ON `mrecord`.`carHno`=`vehicle`.`vehiclecp`
+    LEFT JOIN `client` ON `vehicle`.`vehiclefname`=`client`.`clientid`
+    <if test="id == '1'.toString() ">
+      <!--今日维修记录-->
+      WHERE carHno=#{carNo} AND DATE(orderTime)=DATE(NOW())  GROUP BY `pickcar`.`wx` ORDER BY `mrecord`.`orderTime`
+    </if>
+    <if test="id == '2'.toString() ">
+      <!--历史维修记录-->
+      WHERE carHno=#{carNo} AND DATE(orderTime)!=DATE(NOW())  GROUP BY `pickcar`.`wx` ORDER BY `mrecord`.`orderTime`
+    </if>
+  </select>
+</mapper>

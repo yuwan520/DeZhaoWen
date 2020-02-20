@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.liutao.classMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.liutao.class1" >
+    <result column="classno" property="classno" jdbcType="INTEGER" />
+    <result column="classname" property="classname" jdbcType="VARCHAR" />
+    <result column="weight" property="weight" jdbcType="INTEGER" />
+    <result column="manHour" property="manHour" jdbcType="INTEGER"></result>
+    <collection property="teams" ofType="team">
+      <result column="teamno" property="teamno" jdbcType="INTEGER" />
+      <result column="teamname" property="teamname" jdbcType="VARCHAR" />
+      <result column="number" property="number" jdbcType="VARCHAR" />
+      <result column="artname" property="artname" jdbcType="VARCHAR" />
+      <result column="sex" property="sex" jdbcType="VARCHAR" />
+      <result column="phone" property="phone" jdbcType="INTEGER" />
+      <result column="site" property="site" jdbcType="VARCHAR" />
+      <result column="logname" property="logname" jdbcType="VARCHAR" />
+      <result column="idcard" property="idcard" jdbcType="VARCHAR" />
+      <result column="classno" property="classno" jdbcType="INTEGER" />
+      <result column="typeg" property="typeg" jdbcType="VARCHAR" />
+      <result column="brands" property="brands" jdbcType="VARCHAR" />
+    </collection>
+  </resultMap>
+  <insert id="insert" parameterType="com.accp.pojo.liutao.class1" >
+    insert into class (classno, classname, weight
+      )
+    values (#{classno,jdbcType=INTEGER}, #{classname,jdbcType=VARCHAR}, #{weight,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.pojo.liutao.class1" >
+    insert into class
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="classno != null" >
+        classno,
+      </if>
+      <if test="classname != null" >
+        classname,
+      </if>
+      <if test="weight != null" >
+        weight,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="classno != null" >
+        #{classno,jdbcType=INTEGER},
+      </if>
+      <if test="classname != null" >
+        #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="queryArtisan" resultMap="BaseResultMap">
+         SELECT classname,teamname,manHour FROM `team` LEFT JOIN `class` ON `team`.`classno`=`class`.`classno`
+  </select>
+</mapper>
