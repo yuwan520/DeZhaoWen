@@ -5,6 +5,7 @@
     <result column="classno" property="classno" jdbcType="INTEGER" />
     <result column="classname" property="classname" jdbcType="VARCHAR" />
     <result column="weight" property="weight" jdbcType="INTEGER" />
+    <result column="manHour" property="manHour" jdbcType="INTEGER" />
   </resultMap>
   
   <select id="selectAll" resultType="com.accp.pojo.class1">
@@ -16,7 +17,7 @@
   </delete>
   
   <insert id="insert">
-  	insert into class (classno,classname,weight) values (#{record.classno},#{record.classname},#{record.weight})
+  	insert into class (classno,classname,weight) values (#{record.classno},#{record.classname},#{record.weight},#{record.manHour})
   </insert>
   
   

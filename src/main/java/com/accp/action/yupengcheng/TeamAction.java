@@ -1,5 +1,7 @@
 package com.accp.action.yupengcheng;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,5 +37,18 @@ public class TeamAction {
 			/*return classbiz.insertAll(record);*/
 			int cs=teambiz.insertAll(record);
 			return cs>0?"ok":"false";
+		}
+		
+	//修改方法
+		@PostMapping("upd")
+		public String updateByTeamno(@RequestBody team teams) {
+			int we=teambiz.updateByteamNo(teams);
+			return we>0?"ok":"false";
+		}
+		
+	//根据teamno查询
+		@GetMapping("pages")
+		public List<team> selectAllteamno(int teamno){
+			return teambiz.selectAll(teamno);
 		}
 }

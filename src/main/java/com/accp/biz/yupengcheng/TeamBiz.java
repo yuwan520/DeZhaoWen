@@ -1,5 +1,7 @@
 package com.accp.biz.yupengcheng;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -25,6 +27,11 @@ public class TeamBiz {
 		return page;
 	}
 	
+	//根据teamno查询
+	public List<team> selectAll(int teamno){
+		return teammap.selectByteamno(teamno);
+	}
+	
 	//新增技工
 	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
 	public int insertAll(team record) {
@@ -39,10 +46,10 @@ public class TeamBiz {
 		return cs;
 	}
 	
-/*	//修改技工
+	//修改技工
 	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
-	public int updateByclassNo(int classno) {
-		int we = classmap.update(classno);
+	public int updateByteamNo(team record) {
+		int we = teammap.updateInTeam(record);
 		return we;
-	}*/
+	}
 }

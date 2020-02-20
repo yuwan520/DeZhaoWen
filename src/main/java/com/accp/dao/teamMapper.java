@@ -20,4 +20,8 @@ public interface teamMapper {
 	int insert(@Param("record")team record);
 
 	int insertSelective(team record);
+	
+	int updateInTeam(@Param("record")team record);
+	
+	List<team> selectByteamno(@Param("teamno") int teamno);
 }

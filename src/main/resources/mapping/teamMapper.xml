@@ -28,6 +28,10 @@
 	<select id="selectTeamAll" resultType="com.accp.pojo.team">
 		select * from team
 	</select>
+	
+	<select id="selectByteamno" resultType="com.accp.pojo.team">
+		select * from team where teamno=#{teamno}
+	</select>
 
 	<delete id="deleteByTeamNo">
 		delete from team where teamno=#{teamno}
@@ -43,27 +47,54 @@
 		delete from car where numbercar=#{numbercar}
 	</delete>
 
+	<update id="updateInTeam">
+		update team set
+		 	<if test="record.teamno != null">
+				teamno=#{record.teamno},
+			</if>
+			<if test="record.teamname != null">
+				teamname=#{record.teamname},
+			</if>
+			<if test="record.number != null">
+				number=#{record.number},
+			</if>
+			<if test="record.artname != null">
+				artname=#{record.artname},
+			</if>
+			<if test="record.sex != null">
+				sex=#{record.sex},
+			</if>
+			<if test="record.phone != null">
+				phone=#{record.phone},
+			</if>
+			<if test="record.site != null">
+				site=#{record.site},
+			</if>
+			<if test="record.logname != null">
+				logname=#{record.logname},
+			</if>
+			<if test="record.idcard != null">
+				idcard=#{record.idcard},
+			</if>
+			<if test="record.classno != null">
+				classno=#{record.classno},
+			</if>
+			<if test="record.typeg != null">
+				typeg=#{record.typeg},
+			</if>
+			<if test="record.brands != null">
+				brands=#{record.brands}
+			</if>
+		where teamno = #{record.teamno}
+	</update>
 
-	<!-- <insert id="insert" parameterType="com.accp.pojo.team">
-		insert into team (teamno,
-		teamname, number,
-		artname, sex, phone,
-		site, logname, idcard,
-		classno,
-		typeg, brands
-		)
-		values (#{teamno,jdbcType=INTEGER},
-		#{teamname,jdbcType=VARCHAR},
-		#{number,jdbcType=VARCHAR},
-		#{artname,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR},
-		#{phone,jdbcType=INTEGER},
-		#{site,jdbcType=VARCHAR},
-		#{logname,jdbcType=VARCHAR},
-		#{idcard,jdbcType=VARCHAR},
-		#{classno,jdbcType=INTEGER}, #{typeg,jdbcType=VARCHAR},
-		#{brands,jdbcType=VARCHAR}
-		)
-	</insert> -->
+	<!-- <insert id="insert" parameterType="com.accp.pojo.team"> insert into 
+		team (teamno, teamname, number, artname, sex, phone, site, logname, idcard, 
+		classno, typeg, brands ) values (#{teamno,jdbcType=INTEGER}, #{teamname,jdbcType=VARCHAR}, 
+		#{number,jdbcType=VARCHAR}, #{artname,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+		#{phone,jdbcType=INTEGER}, #{site,jdbcType=VARCHAR}, #{logname,jdbcType=VARCHAR}, 
+		#{idcard,jdbcType=VARCHAR}, #{classno,jdbcType=INTEGER}, #{typeg,jdbcType=VARCHAR}, 
+		#{brands,jdbcType=VARCHAR} ) </insert> -->
 	<insert id="insertSelective" parameterType="com.accp.pojo.team">
 		insert into team
 		<trim prefix="(" suffix=")" suffixOverrides=",">

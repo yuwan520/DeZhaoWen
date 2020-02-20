@@ -6,8 +6,19 @@ public class class1 {
     private String classname;
 
     private Integer weight;
+    
+    private Integer manHour;
+    
 
-    public Integer getClassno() {
+    public Integer getManHour() {
+		return manHour;
+	}
+
+	public void setManHour(Integer manHour) {
+		this.manHour = manHour;
+	}
+
+	public Integer getClassno() {
         return classno;
     }
 
