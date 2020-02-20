@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--suppress ALL -->
+<mapper namespace="com.accp.dao.liutao.vehicleMapper">
+    <resultMap id="BaseResultMap" type="com.accp.pojo.liutao.vehicle">
+        <id column="vehiclecp" property="vehiclecp" jdbcType="VARCHAR"/>
+        <result column="vehiclepp" property="vehiclepp" jdbcType="VARCHAR"/>
+        <result column="vehiclexh" property="vehiclexh" jdbcType="VARCHAR"/>
+        <result column="vehiclejsy" property="vehiclejsy" jdbcType="VARCHAR"/>
+        <result column="vehicledh" property="vehicledh" jdbcType="VARCHAR"/>
+        <result column="vehiclegs" property="vehiclegs" jdbcType="VARCHAR"/>
+        <result column="vehiclefdj" property="vehiclefdj" jdbcType="VARCHAR"/>
+        <result column="vehiclefname" property="vehiclefname" jdbcType="VARCHAR"/>
+        <result column="vehiclefdq" property="vehiclefdq" jdbcType="DATE"/>
+        <result column="vehiclefcjh" property="vehiclefcjh" jdbcType="VARCHAR"/>
+        <result column="vehicleffdjh" property="vehicleffdjh" jdbcType="VARCHAR"/>
+        <result column="vehiclefzz" property="vehiclefzz" jdbcType="VARCHAR"/>
+        <result column="vehiclefrylb" property="vehiclefrylb" jdbcType="VARCHAR"/>
+        <result column="vehiclefcx" property="vehiclefcx" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="queryCarNo" resultMap="BaseResultMap">
+        SELECT vehiclecp FROM `vehicle`
+  </select>
+    <select id="queryCarInfo" resultType="com.accp.vo.liutao.carInfo">
+        SELECT vehiclecp,vehiclejsy,vehicledh,clientname,clientaddress,brandname,motorcyclecxmc,vehicleffdjh,enginename FROM `vehicle`
+        LEFT JOIN `client` ON `vehicle`.`vehiclefname`=`client`.`clientid`
+        LEFT JOIN `brand` ON `vehicle`.`vehiclepp`=`brand`.`brandid`
+        LEFT JOIN `motorcycle` ON `vehicle`.`vehiclexh`=`motorcycle`.`motorcyclepp`
+        LEFT JOIN `engine` ON `vehicle`.`vehiclefdj`=`engine`.`engineid`
+        WHERE vehiclecp=#{carno}
+  </select>
+    <select id="queryPickInfo" resultType="com.accp.vo.liutao.carInfo">
+        SELECT vehiclecp,vehiclefcjh,motorcyclecxmc,vehiclefcx,vehicleffdjh,brandname,enginename,clientname,vehiclejsy,vehicledh FROM `vehicle`
+        LEFT JOIN `motorcycle` ON `vehicle`.`vehiclexh`=`motorcycle`.`motorcyclepp`
+        LEFT JOIN `engine` ON `vehicle`.`vehiclefdj`=`engine`.`engineid`
+        LEFT JOIN `client` ON `vehicle`.`vehiclefname`=`client`.`clientid`
+        LEFT JOIN `brand` ON `vehicle`.`vehiclepp`=`brand`.`brandid`
+        WHERE vehiclecp=#{carno}
+    </select>
+    <select id="queryMainInfoBypno" resultType="com.accp.vo.liutao.minfo">
+        SELECT projectChild,coding,itemName,priceType,standard,VIP FROM `maintaininfo`
+        LEFT JOIN `pdetails` ON `maintaininfo`.`project`=`pdetails`.`detailno`
+        WHERE project=#{pno}
+    </select>
+    <select id="queryVehiclecp" resultMap="BaseResultMap">
+        SELECT vehiclecp FROM `vehicle` WHERE vehiclecp LIKE #{Vtext}
+    </select>
+</mapper>

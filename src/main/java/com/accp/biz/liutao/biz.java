@@ -1,9 +1,14 @@
 package com.accp.biz.liutao;
 
-import com.accp.dao.classMapper;
-import com.accp.dao.mrecordMapper;
-import com.accp.dao.pickcarMapper;
+import com.accp.dao.liutao.classMapper;
+import com.accp.dao.liutao.mrecordMapper;
+import com.accp.dao.liutao.pickcarMapper;
 import com.accp.pojo.*;
+import com.accp.pojo.liutao.class1;
+import com.accp.pojo.liutao.mrecord;
+import com.accp.pojo.liutao.pickcar;
+import com.accp.pojo.liutao.projecttype;
+import com.accp.pojo.liutao.vehicle;
 import com.accp.vo.liutao.carInfo;
 import com.accp.vo.liutao.minfo;
 import com.accp.vo.liutao.vehicleInfo;
@@ -20,10 +25,10 @@ import java.util.List;
 public class biz {
 
     @Autowired
-    private com.accp.dao.vehicleMapper vehicleMapper;
+    private com.accp.dao.liutao.vehicleMapper vehicleMapper;
 
     @Autowired
-    private com.accp.dao.projecttypeMapper projecttypeMapper;
+    private com.accp.dao.liutao.projecttypeMapper projecttypeMapper;
 
     @Autowired
     private pickcarMapper pickcarMapper;

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--suppress ALL -->
+<mapper namespace="com.accp.dao.liutao.projecttypeMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.liutao.projecttype" >
+    <id column="pno" property="pno" jdbcType="VARCHAR" />
+    <result column="pname" property="pname" jdbcType="VARCHAR" />
+    <collection property="pdetails" ofType="com.accp.pojo.liutao.Pdetails">
+      <result column="detailno" property="detailno"/>
+      <result column="projectchild" property="projectchild"/>
+      <result column="projectno" property="projectno"/>
+    </collection>
+  </resultMap>
+  <select id="queryProjectType" resultMap="BaseResultMap">
+        SELECT * FROM `projecttype`
+        LEFT JOIN `pdetails` ON `projecttype`.`pno`=`pdetails`.`projectNo`
+  </select>
+</mapper>

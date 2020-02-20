@@ -1,10 +1,10 @@
 package com.accp.action.liutao;
 
 import com.accp.biz.liutao.biz;
-import com.accp.pojo.class1;
-import com.accp.pojo.pickcar;
-import com.accp.pojo.projecttype;
-import com.accp.pojo.vehicle;
+import com.accp.pojo.liutao.class1;
+import com.accp.pojo.liutao.pickcar;
+import com.accp.pojo.liutao.projecttype;
+import com.accp.pojo.liutao.vehicle;
 import com.accp.vo.liutao.carInfo;
 import com.accp.vo.liutao.minfo;
 import com.accp.vo.liutao.vehicleInfo;
