@@ -2,7 +2,7 @@ package com.accp.pojo.yupengcheng;
 
 import java.util.List;
 
-public class team {
+public class team1 {
     private Integer teamno;
 
     private String teamname;

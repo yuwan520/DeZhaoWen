@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.yupengcheng.TeamBiz;
-import com.accp.pojo.yupengcheng.class1;
-import com.accp.pojo.yupengcheng.team;
+import com.accp.pojo.yupengcheng.class11;
+import com.accp.pojo.yupengcheng.team1;
 import com.github.pagehelper.PageInfo;
 @RestController
 @RequestMapping("api/team")
@@ -22,7 +22,7 @@ public class TeamAction {
 	
 	//查询全部
 	@GetMapping("page")
-	public PageInfo<team> getteamByPage(int num,String bm){
+	public PageInfo<team1> getteamByPage(int num,String bm){
 		return teambiz.queryAll(num, bm);
 	}
 	//删除
@@ -33,7 +33,7 @@ public class TeamAction {
 	}
 	//新增方法
 		@PostMapping("add")
-		public String insertAlls(@RequestBody team record) {
+		public String insertAlls(@RequestBody team1 record) {
 			/*return classbiz.insertAll(record);*/
 			int cs=teambiz.insertAll(record);
 			return cs>0?"ok":"false";
@@ -41,14 +41,14 @@ public class TeamAction {
 		
 	//修改方法
 		@PostMapping("upd")
-		public String updateByTeamno(@RequestBody team teams) {
+		public String updateByTeamno(@RequestBody team1 teams) {
 			int we=teambiz.updateByteamNo(teams);
 			return we>0?"ok":"false";
 		}
 		
 	//根据teamno查询
 		@GetMapping("pages")
-		public List<team> selectAllteamno(int teamno){
+		public List<team1> selectAllteamno(int teamno){
 			return teambiz.selectAll(teamno);
 		}
 }

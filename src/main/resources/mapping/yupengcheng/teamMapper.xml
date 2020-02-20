@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.accp.dao.yupengcheng.teamMapper">
-	<resultMap id="BaseResultMap" type="com.accp.pojo.yupengcheng.team">
+	<resultMap id="BaseResultMap" type="com.accp.pojo.yupengcheng.team1">
 		<result column="teamno" property="teamno" jdbcType="INTEGER" />
 		<result column="teamname" property="teamname" jdbcType="VARCHAR" />
 		<result column="number" property="number" jdbcType="VARCHAR" />
@@ -25,11 +25,11 @@
 		ON `team`.`teamno`=`car`.`teamno`
 	</select>
 
-	<select id="selectTeamAll" resultType="com.accp.pojo.yupengcheng.team">
+	<select id="selectTeamAll" resultType="com.accp.pojo.yupengcheng.team1">
 		select * from team
 	</select>
 	
-	<select id="selectByteamno" resultType="com.accp.pojo.yupengcheng.team">
+	<select id="selectByteamno" resultType="com.accp.pojo.yupengcheng.team1">
 		select * from team where teamno=#{teamno}
 	</select>
 
@@ -88,14 +88,14 @@
 		where teamno = #{record.teamno}
 	</update>
 
-	<!-- <insert id="insert" parameterType="com.accp.pojo.yupengcheng.team"> insert into 
+	<!-- <insert id="insert" parameterType="com.accp.pojo.yupengcheng.team1"> insert into 
 		team (teamno, teamname, number, artname, sex, phone, site, logname, idcard, 
 		classno, typeg, brands ) values (#{teamno,jdbcType=INTEGER}, #{teamname,jdbcType=VARCHAR}, 
 		#{number,jdbcType=VARCHAR}, #{artname,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
 		#{phone,jdbcType=INTEGER}, #{site,jdbcType=VARCHAR}, #{logname,jdbcType=VARCHAR}, 
 		#{idcard,jdbcType=VARCHAR}, #{classno,jdbcType=INTEGER}, #{typeg,jdbcType=VARCHAR}, 
 		#{brands,jdbcType=VARCHAR} ) </insert> -->
-	<insert id="insertSelective" parameterType="com.accp.pojo.yupengcheng.team">
+	<insert id="insertSelective" parameterType="com.accp.pojo.yupengcheng.team1">
 		insert into team
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="teamno != null">

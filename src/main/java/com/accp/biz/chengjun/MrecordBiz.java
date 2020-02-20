@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.accp.dao.chengjun.mrecordMapper;
+import com.accp.dao.chengjun.mrecordMapper1;
 import com.accp.vo.chengjun.JieSuanVo;
 import com.accp.vo.chengjun.JieSuanVo1;
 
 @Service("MrecordBiz")
 public class MrecordBiz {
 @Autowired
-mrecordMapper Dao;
+mrecordMapper1 Dao;
 
 public List<JieSuanVo> find(){
 	return Dao.selectByPrimaryKey1();

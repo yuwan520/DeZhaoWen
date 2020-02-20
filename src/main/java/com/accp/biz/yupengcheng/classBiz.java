@@ -8,9 +8,9 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.accp.dao.yupengcheng.classMapper;
+import com.accp.dao.yupengcheng.classMapper1;
 import com.accp.pojo.yupengcheng.car;
-import com.accp.pojo.yupengcheng.class1;
+import com.accp.pojo.yupengcheng.class11;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -18,18 +18,18 @@ import com.github.pagehelper.PageInfo;
 public class classBiz {
 
 	@Autowired
-	private classMapper classmap;
+	private classMapper1 classmap;
 
 	// 分页查询
-	public PageInfo<class1> queryAll(int num, String bm) {
+	public PageInfo<class11> queryAll(int num, String bm) {
 		PageHelper.startPage(num, 4);
-		PageInfo<class1> page = new PageInfo<>(classmap.selectAll());
+		PageInfo<class11> page = new PageInfo<>(classmap.selectAll());
 		return page;
 	}
 
 	// 新增星级
 	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
-	public int insertAll(class1 record) {
+	public int insertAll(class11 record) {
 		int ak = classmap.insert(record);
 		return ak;
 	}

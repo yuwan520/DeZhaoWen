@@ -9,8 +9,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.yupengcheng.teamMapper;
-import com.accp.pojo.yupengcheng.class1;
-import com.accp.pojo.yupengcheng.team;
+import com.accp.pojo.yupengcheng.class11;
+import com.accp.pojo.yupengcheng.team1;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -21,20 +21,20 @@ public class TeamBiz {
 	private teamMapper teammap;
 	
 	//分页查询
-	public PageInfo<team> queryAll(int num,String bm){
+	public PageInfo<team1> queryAll(int num,String bm){
 		PageHelper.startPage(num, 3);
-		PageInfo<team> page=new PageInfo<>(teammap.selectTeamAll(bm));
+		PageInfo<team1> page=new PageInfo<>(teammap.selectTeamAll(bm));
 		return page;
 	}
 	
 	//根据teamno查询
-	public List<team> selectAll(int teamno){
+	public List<team1> selectAll(int teamno){
 		return teammap.selectByteamno(teamno);
 	}
 	
 	//新增技工
 	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
-	public int insertAll(team record) {
+	public int insertAll(team1 record) {
 		int ak = teammap.insert(record);
 		return ak;
 	}
@@ -48,7 +48,7 @@ public class TeamBiz {
 	
 	//修改技工
 	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
-	public int updateByteamNo(team record) {
+	public int updateByteamNo(team1 record) {
 		int we = teammap.updateInTeam(record);
 		return we;
 	}

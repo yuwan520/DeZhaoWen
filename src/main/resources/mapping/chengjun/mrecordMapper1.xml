@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.accp.dao.chengjun.mrecordMapper" >
-  <resultMap id="BaseResultMap" type="com.accp.pojo.chengjun.mrecord" >
+<mapper namespace="com.accp.dao.chengjun.mrecordMapper1" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.chengjun.mrecord1" >
     <id column="carHno" property="carhno" jdbcType="VARCHAR" />
     <result column="status1" property="status1" jdbcType="VARCHAR" />
     <result column="btype" property="btype" jdbcType="VARCHAR" />
@@ -62,7 +62,7 @@
     delete from mrecord
     where carHno = #{carhno,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.accp.pojo.chengjun.mrecord" >
+  <insert id="insert" parameterType="com.accp.pojo.chengjun.mrecord1" >
     insert into mrecord (carHno, status1, btype, 
       rorder, orderType, orderTime, 
       colsing)
@@ -70,7 +70,7 @@
       #{rorder,jdbcType=VARCHAR}, #{ordertype,jdbcType=VARCHAR}, #{ordertime,jdbcType=TIMESTAMP}, 
       #{colsing,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.accp.pojo.chengjun.mrecord" >
+  <insert id="insertSelective" parameterType="com.accp.pojo.chengjun.mrecord1" >
     insert into mrecord
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="carhno != null" >
@@ -119,7 +119,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.chengjun.mrecord" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.chengjun.mrecord1" >
     update mrecord
     <set >
       <if test="status1 != null" >

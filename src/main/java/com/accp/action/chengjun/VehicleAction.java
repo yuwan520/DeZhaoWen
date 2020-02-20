@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.chengjun.VehicleBiz;
 import com.accp.pojo.chengjun.client;
-import com.accp.pojo.chengjun.vehicle;
+import com.accp.pojo.chengjun.vehicle1;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -29,22 +29,22 @@ public class VehicleAction {
  
   @GetMapping("/{pageNum}")
   //查讯所有车
-  public PageInfo<vehicle> find(@PathVariable int pageNum){
+  public PageInfo<vehicle1> find(@PathVariable int pageNum){
  	PageHelper.startPage(pageNum,3);
- 	 PageInfo<vehicle> info=new PageInfo<>(Biz.find());
+ 	 PageInfo<vehicle1> info=new PageInfo<>(Biz.find());
  	 return info;
   }
   @GetMapping("/ves/{pageNum}/{name}")
   //查讯用户的车
-  public PageInfo<vehicle> find(@PathVariable int pageNum, @PathVariable  String name){
+  public PageInfo<vehicle1> find(@PathVariable int pageNum, @PathVariable  String name){
 	  PageHelper.startPage(pageNum,3);
-	 	 PageInfo<vehicle> info=new PageInfo<>(Biz.find3(name));
+	 	 PageInfo<vehicle1> info=new PageInfo<>(Biz.find3(name));
  	return info;
   }
    
   //新增车辆
   @PostMapping("/vehicles")
-  public Map<String,String> add(@RequestBody vehicle xzcl){
+  public Map<String,String> add(@RequestBody vehicle1 xzcl){
 	  int js=Biz.add(xzcl);
 	  
 	  Map<String,String> map=new HashMap<String, String>();
@@ -59,13 +59,13 @@ public class VehicleAction {
   }
   //查询需要修改车辆
   @GetMapping("/vehicles/{cp}")
-  public vehicle find1(@PathVariable String cp){
+  public vehicle1 find1(@PathVariable String cp){
 	  System.out.println(cp);
 	return Biz.find1(cp);
   }
 //修改客户
 @PutMapping("/vehicles")
-public Map<String,String> update(@RequestBody vehicle xzcl) {
+public Map<String,String> update(@RequestBody vehicle1 xzcl) {
 	int js=Biz.xg(xzcl);
 	Map<String,String> map=new HashMap<String, String>();
 	if (js>0) {

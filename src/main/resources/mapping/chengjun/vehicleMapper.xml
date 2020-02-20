@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.accp.dao.vehicleMapper" >
-  <resultMap id="BaseResultMap" type="com.accp.pojo.chengjun.vehicle" >
+<mapper namespace="com.accp.dao.chengjun.vehicleMapper1" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.chengjun.vehicle1" >
     <id column="vehiclecp" property="vehiclecp" jdbcType="VARCHAR" />
     <result column="vehiclepp" property="vehiclepp" jdbcType="VARCHAR" />
     <result column="vehiclexh" property="vehiclexh" jdbcType="VARCHAR" />
@@ -45,7 +45,7 @@
     delete from vehicle
     where vehiclecp = #{vehiclecp,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.accp.pojo.chengjun.vehicle" >
+  <insert id="insert" parameterType="com.accp.pojo.chengjun.vehicle1" >
     insert into vehicle (vehiclecp, vehiclepp, vehiclexh, 
       vehiclejsy, vehicledh, vehiclegs, 
       vehiclefdj, vehiclefname, vehiclefdq, 
@@ -57,7 +57,7 @@
       #{vehiclefcjh,jdbcType=VARCHAR}, #{vehicleffdjh,jdbcType=VARCHAR}, #{vehiclefzz,jdbcType=VARCHAR}, 
       #{vehiclefrylb,jdbcType=VARCHAR}, #{vehiclefcx,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.accp.pojo.chengjun.vehicle" >
+  <insert id="insertSelective" parameterType="com.accp.pojo.chengjun.vehicle1" >
     insert into vehicle
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="vehiclecp != null" >
@@ -148,7 +148,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.chengjun.vehicle" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.chengjun.vehicle1" >
     update vehicle
     <set >
       <if test="vehiclepp != null" >
@@ -193,7 +193,7 @@
     </set>
     where vehiclecp = #{vehiclecp,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.chengjun.vehicle" >
+  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.chengjun.vehicle1" >
     update vehicle
     set vehiclepp = #{vehiclepp,jdbcType=VARCHAR},
       vehiclexh = #{vehiclexh,jdbcType=VARCHAR},

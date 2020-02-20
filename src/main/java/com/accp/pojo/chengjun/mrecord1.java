@@ -2,7 +2,7 @@ package com.accp.pojo.chengjun;
 
 import java.util.Date;
 
-public class mrecord {
+public class mrecord1 {
     private String carhno;
 
     private String status1;

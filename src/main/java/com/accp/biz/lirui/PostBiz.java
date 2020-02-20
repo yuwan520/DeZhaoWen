@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.accp.dao.lirui.postMapper;
 import com.accp.pojo.lirui.post;
 
-@Service("biz")
+@Service("PostBiz")
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true)
 public class PostBiz {
 

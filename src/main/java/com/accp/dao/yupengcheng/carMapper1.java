@@ -5,11 +5,11 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.accp.pojo.yupengcheng.car;
-import com.accp.pojo.yupengcheng.team;
+import com.accp.pojo.yupengcheng.team1;
 
-public interface carMapper {
+public interface carMapper1 {
 
-	List<team> selectAll();
+	List<team1> selectAll();
 	
 	int deleteByNumbercar(@Param("numbercar")String numbercar);
 	

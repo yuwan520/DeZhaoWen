@@ -2,7 +2,7 @@ package com.accp.pojo.chengjun;
 
 import java.util.Date;
 
-public class vehicle {
+public class vehicle1 {
     private String vehiclecp;
 
     private String vehiclepp;

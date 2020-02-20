@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.yupengcheng.classBiz;
 import com.accp.pojo.yupengcheng.car;
-import com.accp.pojo.yupengcheng.class1;
+import com.accp.pojo.yupengcheng.class11;
 import com.github.pagehelper.PageInfo;
 
 @RestController
@@ -23,7 +23,7 @@ public class Class1Action {
 	
 	//查新全部
 	@GetMapping("page")
-	public PageInfo<class1> getcarByPage(int num,String bm){
+	public PageInfo<class11> getcarByPage(int num,String bm){
 		return classbiz.queryAll(num, bm);
 	}
 	
@@ -37,7 +37,7 @@ public class Class1Action {
 	
 	//新增方法
 	@PostMapping("add")
-	public String insertAlls(@RequestBody class1 record) {
+	public String insertAlls(@RequestBody class11 record) {
 		/*return classbiz.insertAll(record);*/
 		int cs=classbiz.insertAll(record);
 		return cs>0?"ok":"false";

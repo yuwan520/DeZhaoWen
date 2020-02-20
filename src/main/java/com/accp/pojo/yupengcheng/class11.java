@@ -1,6 +1,6 @@
 package com.accp.pojo.yupengcheng;
 
-public class class1 {
+public class class11 {
     private Integer classno;
 
     private String classname;

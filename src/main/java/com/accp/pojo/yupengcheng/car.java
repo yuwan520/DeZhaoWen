@@ -13,16 +13,16 @@ public class car {
 
     private Integer teamno;
     
-    private List<team> li;
+    private List<team1> li;
     
     
     
    
-	public List<team> getLi() {
+	public List<team1> getLi() {
 		return li;
 	}
 
-	public void setLi(List<team> li) {
+	public void setLi(List<team1> li) {
 		this.li = li;
 	}
 
@@ -72,7 +72,7 @@ public class car {
 				+ ", teamno=" + teamno + ", li=" + li + "]";
 	}
 
-	public car(String numbercar, String brands, String typecar, Integer mileage, Integer teamno, List<team> li) {
+	public car(String numbercar, String brands, String typecar, Integer mileage, Integer teamno, List<team1> li) {
 		super();
 		this.numbercar = numbercar;
 		this.brands = brands;

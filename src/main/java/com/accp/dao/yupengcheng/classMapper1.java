@@ -4,17 +4,17 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.accp.pojo.yupengcheng.class1;
+import com.accp.pojo.yupengcheng.class11;
 
-public interface classMapper {
+public interface classMapper1 {
 	
-	List<class1> selectAll();
+	List<class11> selectAll();
 	
 	int delete(@Param("classno") int classno);
 	
-    int insert(@Param("record") class1 record);
+    int insert(@Param("record") class11 record);
     
     int update(@Param("classno") int classno);
 
-    int insertSelective(class1 record);
+    int insertSelective(class11 record);
 }
