@@ -9,109 +9,25 @@
     <result column="orderType" property="ordertype" jdbcType="VARCHAR" />
     <result column="orderTime" property="ordertime" jdbcType="TIMESTAMP" />
     <result column="colsing" property="colsing" jdbcType="VARCHAR" />
+    <result column="comstatus" property="comstatus" jdbcType="BOOLEAN"></result>
   </resultMap>
-  <sql id="Base_Column_List" >
-    carHno, status1, btype, rorder, orderType, orderTime, colsing
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from mrecord
-    where carHno = #{carhno,jdbcType=VARCHAR}
+  <select id="QueryMrecordNo" resultType="java.lang.String">
+        SELECT REPLACE(rorder,'ER','') er FROM `mrecord` WHERE DATE(orderTime)=DATE(NOW()) ORDER BY er DESC LIMIT 1
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from mrecord
-    where carHno = #{carhno,jdbcType=VARCHAR}
-  </delete>
-  <insert id="insert" parameterType="com.accp.pojo.mrecord" >
-    insert into mrecord (carHno, status1, btype, 
-      rorder, orderType, orderTime, 
-      colsing)
-    values (#{carhno,jdbcType=VARCHAR}, #{status1,jdbcType=VARCHAR}, #{btype,jdbcType=VARCHAR}, 
-      #{rorder,jdbcType=VARCHAR}, #{ordertype,jdbcType=VARCHAR}, #{ordertime,jdbcType=TIMESTAMP}, 
-      #{colsing,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.accp.pojo.mrecord" >
-    insert into mrecord
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="carhno != null" >
-        carHno,
-      </if>
-      <if test="status1 != null" >
-        status1,
-      </if>
-      <if test="btype != null" >
-        btype,
-      </if>
-      <if test="rorder != null" >
-        rorder,
-      </if>
-      <if test="ordertype != null" >
-        orderType,
-      </if>
-      <if test="ordertime != null" >
-        orderTime,
-      </if>
-      <if test="colsing != null" >
-        colsing,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="carhno != null" >
-        #{carhno,jdbcType=VARCHAR},
-      </if>
-      <if test="status1 != null" >
-        #{status1,jdbcType=VARCHAR},
-      </if>
-      <if test="btype != null" >
-        #{btype,jdbcType=VARCHAR},
-      </if>
-      <if test="rorder != null" >
-        #{rorder,jdbcType=VARCHAR},
-      </if>
-      <if test="ordertype != null" >
-        #{ordertype,jdbcType=VARCHAR},
-      </if>
-      <if test="ordertime != null" >
-        #{ordertime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="colsing != null" >
-        #{colsing,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.mrecord" >
-    update mrecord
-    <set >
-      <if test="status1 != null" >
-        status1 = #{status1,jdbcType=VARCHAR},
-      </if>
-      <if test="btype != null" >
-        btype = #{btype,jdbcType=VARCHAR},
-      </if>
-      <if test="rorder != null" >
-        rorder = #{rorder,jdbcType=VARCHAR},
-      </if>
-      <if test="ordertype != null" >
-        orderType = #{ordertype,jdbcType=VARCHAR},
-      </if>
-      <if test="ordertime != null" >
-        orderTime = #{ordertime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="colsing != null" >
-        colsing = #{colsing,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where carHno = #{carhno,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.mrecord" >
-    update mrecord
-    set status1 = #{status1,jdbcType=VARCHAR},
-      btype = #{btype,jdbcType=VARCHAR},
-      rorder = #{rorder,jdbcType=VARCHAR},
-      orderType = #{ordertype,jdbcType=VARCHAR},
-      orderTime = #{ordertime,jdbcType=TIMESTAMP},
-      colsing = #{colsing,jdbcType=VARCHAR}
-    where carHno = #{carhno,jdbcType=VARCHAR}
-  </update>
+    <select id="queryPickCar" resultMap="BaseResultMap">
+      SELECT * FROM `mrecord` WHERE `status`='接车中' AND carHno=#{carno}
+    </select>
+  <select id="queryAllm" resultType="com.accp.vo.liutao.vehicleInfo">
+      SELECT `status`,`comstatus`,`btype`,`clientname`,`carHno`,`clientiphone`,`rorder`,`orderType`,`orderTime`,`expectedCompletion`,`complterTime`,`colsing`,`consultant` FROM `mrecord`
+      LEFT JOIN `pickcar` ON `mrecord`.`rorder`=`pickcar`.`wx`
+      LEFT JOIN `vehicle` ON `mrecord`.`carHno`=`vehicle`.`vehiclecp`
+      LEFT JOIN `client` ON `vehicle`.`vehiclefname`=`client`.`clientid`
+      GROUP BY `pickcar`.`wx` ORDER BY  `pickcar`.`complterTime`
+  </select>
+    <update id="comAccp">
+        UPDATE `pickcar` SET complterTime=NOW() WHERE wx=#{eno};
+        UPDATE `mrecord` SET comstatus=1 WHERE rorder=#{eno};
+        UPDATE `mrecord` SET `status`='空闲' WHERE rorder=#{eno};
+    </update>
+
 </mapper>

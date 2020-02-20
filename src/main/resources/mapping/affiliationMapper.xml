@@ -55,4 +55,5 @@
     set affiliationname = #{affiliationname,jdbcType=VARCHAR}
     where affiliationid = #{affiliationid,jdbcType=VARCHAR}
   </update>
+
 </mapper>

@@ -17,6 +17,8 @@ public class mrecord {
 
     private String colsing;
 
+    private boolean comstatus;
+
     public String getCarhno() {
         return carhno;
     }
@@ -71,5 +73,13 @@ public class mrecord {
 
     public void setColsing(String colsing) {
         this.colsing = colsing == null ? null : colsing.trim();
+    }
+
+    public boolean isComstatus() {
+        return comstatus;
+    }
+
+    public void setComstatus(boolean comstatus) {
+        this.comstatus = comstatus;
     }
 }

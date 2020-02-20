@@ -3,7 +3,7 @@ package com.accp.pojo;
 public class maintains {
     private String wxorders;
 
-    private String xmname;
+    private String itemName;
 
     private String pricelei;
 
@@ -15,6 +15,8 @@ public class maintains {
 
     private String wxgroup;
 
+    private String coding;
+
     public String getWxorders() {
         return wxorders;
     }
@@ -23,12 +25,20 @@ public class maintains {
         this.wxorders = wxorders == null ? null : wxorders.trim();
     }
 
-    public String getXmname() {
-        return xmname;
+    public String getItemName() {
+        return itemName;
     }
 
-    public void setXmname(String xmname) {
-        this.xmname = xmname == null ? null : xmname.trim();
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
+    public String getCoding() {
+        return coding;
+    }
+
+    public void setCoding(String coding) {
+        this.coding = coding;
     }
 
     public String getPricelei() {
@@ -70,4 +80,5 @@ public class maintains {
     public void setWxgroup(String wxgroup) {
         this.wxgroup = wxgroup == null ? null : wxgroup.trim();
     }
+
 }

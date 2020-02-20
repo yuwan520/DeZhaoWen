@@ -1,199 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.accp.dao.vehicleMapper" >
-  <resultMap id="BaseResultMap" type="com.accp.pojo.vehicle" >
-    <id column="vehiclecp" property="vehiclecp" jdbcType="VARCHAR" />
-    <result column="vehiclepp" property="vehiclepp" jdbcType="VARCHAR" />
-    <result column="vehiclexh" property="vehiclexh" jdbcType="VARCHAR" />
-    <result column="vehiclejsy" property="vehiclejsy" jdbcType="VARCHAR" />
-    <result column="vehicledh" property="vehicledh" jdbcType="VARCHAR" />
-    <result column="vehiclegs" property="vehiclegs" jdbcType="VARCHAR" />
-    <result column="vehiclefdj" property="vehiclefdj" jdbcType="VARCHAR" />
-    <result column="vehiclefname" property="vehiclefname" jdbcType="VARCHAR" />
-    <result column="vehiclefdq" property="vehiclefdq" jdbcType="DATE" />
-    <result column="vehiclefcjh" property="vehiclefcjh" jdbcType="VARCHAR" />
-    <result column="vehicleffdjh" property="vehicleffdjh" jdbcType="VARCHAR" />
-    <result column="vehiclefzz" property="vehiclefzz" jdbcType="VARCHAR" />
-    <result column="vehiclefrylb" property="vehiclefrylb" jdbcType="VARCHAR" />
-    <result column="vehiclefcx" property="vehiclefcx" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    vehiclecp, vehiclepp, vehiclexh, vehiclejsy, vehicledh, vehiclegs, vehiclefdj, vehiclefname, 
-    vehiclefdq, vehiclefcjh, vehicleffdjh, vehiclefzz, vehiclefrylb, vehiclefcx
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from vehicle
-    where vehiclecp = #{vehiclecp,jdbcType=VARCHAR}
+<!--suppress ALL -->
+<mapper namespace="com.accp.dao.vehicleMapper">
+    <resultMap id="BaseResultMap" type="com.accp.pojo.vehicle">
+        <id column="vehiclecp" property="vehiclecp" jdbcType="VARCHAR"/>
+        <result column="vehiclepp" property="vehiclepp" jdbcType="VARCHAR"/>
+        <result column="vehiclexh" property="vehiclexh" jdbcType="VARCHAR"/>
+        <result column="vehiclejsy" property="vehiclejsy" jdbcType="VARCHAR"/>
+        <result column="vehicledh" property="vehicledh" jdbcType="VARCHAR"/>
+        <result column="vehiclegs" property="vehiclegs" jdbcType="VARCHAR"/>
+        <result column="vehiclefdj" property="vehiclefdj" jdbcType="VARCHAR"/>
+        <result column="vehiclefname" property="vehiclefname" jdbcType="VARCHAR"/>
+        <result column="vehiclefdq" property="vehiclefdq" jdbcType="DATE"/>
+        <result column="vehiclefcjh" property="vehiclefcjh" jdbcType="VARCHAR"/>
+        <result column="vehicleffdjh" property="vehicleffdjh" jdbcType="VARCHAR"/>
+        <result column="vehiclefzz" property="vehiclefzz" jdbcType="VARCHAR"/>
+        <result column="vehiclefrylb" property="vehiclefrylb" jdbcType="VARCHAR"/>
+        <result column="vehiclefcx" property="vehiclefcx" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="queryCarNo" resultMap="BaseResultMap">
+        SELECT vehiclecp FROM `vehicle`
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from vehicle
-    where vehiclecp = #{vehiclecp,jdbcType=VARCHAR}
-  </delete>
-  <insert id="insert" parameterType="com.accp.pojo.vehicle" >
-    insert into vehicle (vehiclecp, vehiclepp, vehiclexh, 
-      vehiclejsy, vehicledh, vehiclegs, 
-      vehiclefdj, vehiclefname, vehiclefdq, 
-      vehiclefcjh, vehicleffdjh, vehiclefzz, 
-      vehiclefrylb, vehiclefcx)
-    values (#{vehiclecp,jdbcType=VARCHAR}, #{vehiclepp,jdbcType=VARCHAR}, #{vehiclexh,jdbcType=VARCHAR}, 
-      #{vehiclejsy,jdbcType=VARCHAR}, #{vehicledh,jdbcType=VARCHAR}, #{vehiclegs,jdbcType=VARCHAR}, 
-      #{vehiclefdj,jdbcType=VARCHAR}, #{vehiclefname,jdbcType=VARCHAR}, #{vehiclefdq,jdbcType=DATE}, 
-      #{vehiclefcjh,jdbcType=VARCHAR}, #{vehicleffdjh,jdbcType=VARCHAR}, #{vehiclefzz,jdbcType=VARCHAR}, 
-      #{vehiclefrylb,jdbcType=VARCHAR}, #{vehiclefcx,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.accp.pojo.vehicle" >
-    insert into vehicle
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="vehiclecp != null" >
-        vehiclecp,
-      </if>
-      <if test="vehiclepp != null" >
-        vehiclepp,
-      </if>
-      <if test="vehiclexh != null" >
-        vehiclexh,
-      </if>
-      <if test="vehiclejsy != null" >
-        vehiclejsy,
-      </if>
-      <if test="vehicledh != null" >
-        vehicledh,
-      </if>
-      <if test="vehiclegs != null" >
-        vehiclegs,
-      </if>
-      <if test="vehiclefdj != null" >
-        vehiclefdj,
-      </if>
-      <if test="vehiclefname != null" >
-        vehiclefname,
-      </if>
-      <if test="vehiclefdq != null" >
-        vehiclefdq,
-      </if>
-      <if test="vehiclefcjh != null" >
-        vehiclefcjh,
-      </if>
-      <if test="vehicleffdjh != null" >
-        vehicleffdjh,
-      </if>
-      <if test="vehiclefzz != null" >
-        vehiclefzz,
-      </if>
-      <if test="vehiclefrylb != null" >
-        vehiclefrylb,
-      </if>
-      <if test="vehiclefcx != null" >
-        vehiclefcx,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="vehiclecp != null" >
-        #{vehiclecp,jdbcType=VARCHAR},
-      </if>
-      <if test="vehiclepp != null" >
-        #{vehiclepp,jdbcType=VARCHAR},
-      </if>
-      <if test="vehiclexh != null" >
-        #{vehiclexh,jdbcType=VARCHAR},
-      </if>
-      <if test="vehiclejsy != null" >
-        #{vehiclejsy,jdbcType=VARCHAR},
-      </if>
-      <if test="vehicledh != null" >
-        #{vehicledh,jdbcType=VARCHAR},
-      </if>
-      <if test="vehiclegs != null" >
-        #{vehiclegs,jdbcType=VARCHAR},
-      </if>
-      <if test="vehiclefdj != null" >
-        #{vehiclefdj,jdbcType=VARCHAR},
-      </if>
-      <if test="vehiclefname != null" >
-        #{vehiclefname,jdbcType=VARCHAR},
-      </if>
-      <if test="vehiclefdq != null" >
-        #{vehiclefdq,jdbcType=DATE},
-      </if>
-      <if test="vehiclefcjh != null" >
-        #{vehiclefcjh,jdbcType=VARCHAR},
-      </if>
-      <if test="vehicleffdjh != null" >
-        #{vehicleffdjh,jdbcType=VARCHAR},
-      </if>
-      <if test="vehiclefzz != null" >
-        #{vehiclefzz,jdbcType=VARCHAR},
-      </if>
-      <if test="vehiclefrylb != null" >
-        #{vehiclefrylb,jdbcType=VARCHAR},
-      </if>
-      <if test="vehiclefcx != null" >
-        #{vehiclefcx,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.vehicle" >
-    update vehicle
-    <set >
-      <if test="vehiclepp != null" >
-        vehiclepp = #{vehiclepp,jdbcType=VARCHAR},
-      </if>
-      <if test="vehiclexh != null" >
-        vehiclexh = #{vehiclexh,jdbcType=VARCHAR},
-      </if>
-      <if test="vehiclejsy != null" >
-        vehiclejsy = #{vehiclejsy,jdbcType=VARCHAR},
-      </if>
-      <if test="vehicledh != null" >
-        vehicledh = #{vehicledh,jdbcType=VARCHAR},
-      </if>
-      <if test="vehiclegs != null" >
-        vehiclegs = #{vehiclegs,jdbcType=VARCHAR},
-      </if>
-      <if test="vehiclefdj != null" >
-        vehiclefdj = #{vehiclefdj,jdbcType=VARCHAR},
-      </if>
-      <if test="vehiclefname != null" >
-        vehiclefname = #{vehiclefname,jdbcType=VARCHAR},
-      </if>
-      <if test="vehiclefdq != null" >
-        vehiclefdq = #{vehiclefdq,jdbcType=DATE},
-      </if>
-      <if test="vehiclefcjh != null" >
-        vehiclefcjh = #{vehiclefcjh,jdbcType=VARCHAR},
-      </if>
-      <if test="vehicleffdjh != null" >
-        vehicleffdjh = #{vehicleffdjh,jdbcType=VARCHAR},
-      </if>
-      <if test="vehiclefzz != null" >
-        vehiclefzz = #{vehiclefzz,jdbcType=VARCHAR},
-      </if>
-      <if test="vehiclefrylb != null" >
-        vehiclefrylb = #{vehiclefrylb,jdbcType=VARCHAR},
-      </if>
-      <if test="vehiclefcx != null" >
-        vehiclefcx = #{vehiclefcx,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where vehiclecp = #{vehiclecp,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.vehicle" >
-    update vehicle
-    set vehiclepp = #{vehiclepp,jdbcType=VARCHAR},
-      vehiclexh = #{vehiclexh,jdbcType=VARCHAR},
-      vehiclejsy = #{vehiclejsy,jdbcType=VARCHAR},
-      vehicledh = #{vehicledh,jdbcType=VARCHAR},
-      vehiclegs = #{vehiclegs,jdbcType=VARCHAR},
-      vehiclefdj = #{vehiclefdj,jdbcType=VARCHAR},
-      vehiclefname = #{vehiclefname,jdbcType=VARCHAR},
-      vehiclefdq = #{vehiclefdq,jdbcType=DATE},
-      vehiclefcjh = #{vehiclefcjh,jdbcType=VARCHAR},
-      vehicleffdjh = #{vehicleffdjh,jdbcType=VARCHAR},
-      vehiclefzz = #{vehiclefzz,jdbcType=VARCHAR},
-      vehiclefrylb = #{vehiclefrylb,jdbcType=VARCHAR},
-      vehiclefcx = #{vehiclefcx,jdbcType=VARCHAR}
-    where vehiclecp = #{vehiclecp,jdbcType=VARCHAR}
-  </update>
+    <select id="queryCarInfo" resultType="com.accp.vo.liutao.carInfo">
+        SELECT vehiclecp,vehiclejsy,vehicledh,clientname,clientaddress,brandname,motorcyclecxmc,vehicleffdjh,enginename FROM `vehicle`
+        LEFT JOIN `client` ON `vehicle`.`vehiclefname`=`client`.`clientid`
+        LEFT JOIN `brand` ON `vehicle`.`vehiclepp`=`brand`.`brandid`
+        LEFT JOIN `motorcycle` ON `vehicle`.`vehiclexh`=`motorcycle`.`motorcyclepp`
+        LEFT JOIN `engine` ON `vehicle`.`vehiclefdj`=`engine`.`engineid`
+        WHERE vehiclecp=#{carno}
+  </select>
+    <select id="queryPickInfo" resultType="com.accp.vo.liutao.carInfo">
+        SELECT vehiclecp,vehiclefcjh,motorcyclecxmc,vehiclefcx,vehicleffdjh,brandname,enginename,clientname,vehiclejsy,vehicledh FROM `vehicle`
+        LEFT JOIN `motorcycle` ON `vehicle`.`vehiclexh`=`motorcycle`.`motorcyclepp`
+        LEFT JOIN `engine` ON `vehicle`.`vehiclefdj`=`engine`.`engineid`
+        LEFT JOIN `client` ON `vehicle`.`vehiclefname`=`client`.`clientid`
+        LEFT JOIN `brand` ON `vehicle`.`vehiclepp`=`brand`.`brandid`
+        WHERE vehiclecp=#{carno}
+    </select>
+    <select id="queryMainInfoBypno" resultType="com.accp.vo.liutao.minfo">
+        SELECT projectChild,coding,itemName,priceType,standard,VIP FROM `maintaininfo`
+        LEFT JOIN `pdetails` ON `maintaininfo`.`project`=`pdetails`.`detailno`
+        WHERE project=#{pno}
+    </select>
+    <select id="queryVehiclecp" resultMap="BaseResultMap">
+        SELECT vehiclecp FROM `vehicle` WHERE vehiclecp LIKE #{Vtext}
+    </select>
 </mapper>

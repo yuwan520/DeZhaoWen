@@ -1,17 +1,42 @@
 package com.accp.dao;
 
+
 import com.accp.pojo.mrecord;
+import com.accp.vo.liutao.vehicleInfo;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface mrecordMapper {
-    int deleteByPrimaryKey(String carhno);
 
-    int insert(mrecord record);
+    /**
+     * Check if there is an order number on that day
+     *
+     * @return
+     */
+    String QueryMrecordNo();
 
-    int insertSelective(mrecord record);
+    /**
+     * Check to see if there is a pickup vehicle
+     *
+     * @param carno
+     * @return
+     */
+    List<mrecord> queryPickCar(@Param("carno") String carno);
 
-    mrecord selectByPrimaryKey(String carhno);
+    /**
+     * 竣工查询
+     *
+     * @return
+     */
+    List<vehicleInfo> queryAllm();
 
-    int updateByPrimaryKeySelective(mrecord record);
+    /**
+     * 竣工验收(简单版)
+     *
+     * @param eno
+     * @return
+     */
+    int comAccp(@Param("eno") String eno);
 
-    int updateByPrimaryKey(mrecord record);
 }

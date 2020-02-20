@@ -1,6 +1,9 @@
 package com.accp.pojo;
 
-import java.util.Date;
+
+
+
+import java.util.List;
 
 public class pickcar {
     private String carno;
@@ -17,7 +20,7 @@ public class pickcar {
 
     private String pickone;
 
-    private Date expectedcompletion;
+    private String expectedcompletion;
 
     private String clearing;
 
@@ -26,6 +29,30 @@ public class pickcar {
     private String remark;
 
     private String repairs;
+
+    private String complterTime;
+
+    private String wx;
+
+    private List<maintains> maintains;
+
+    private mrecord mrecord;
+
+    public List<com.accp.pojo.maintains> getMaintains() {
+        return maintains;
+    }
+
+    public void setMaintains(List<com.accp.pojo.maintains> maintains) {
+        this.maintains = maintains;
+    }
+
+    public com.accp.pojo.mrecord getMrecord() {
+        return mrecord;
+    }
+
+    public void setMrecord(com.accp.pojo.mrecord mrecord) {
+        this.mrecord = mrecord;
+    }
 
     public String getCarno() {
         return carno;
@@ -83,11 +110,11 @@ public class pickcar {
         this.pickone = pickone == null ? null : pickone.trim();
     }
 
-    public Date getExpectedcompletion() {
+    public String getExpectedcompletion() {
         return expectedcompletion;
     }
 
-    public void setExpectedcompletion(Date expectedcompletion) {
+    public void setExpectedcompletion(String expectedcompletion) {
         this.expectedcompletion = expectedcompletion;
     }
 
@@ -121,5 +148,21 @@ public class pickcar {
 
     public void setRepairs(String repairs) {
         this.repairs = repairs == null ? null : repairs.trim();
+    }
+
+    public String getComplterTime() {
+        return complterTime;
+    }
+
+    public void setComplterTime(String complterTime) {
+        this.complterTime = complterTime;
+    }
+
+    public String getWx() {
+        return wx;
+    }
+
+    public void setWx(String wx) {
+        this.wx = wx;
     }
 }
