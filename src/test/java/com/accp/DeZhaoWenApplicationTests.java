@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.accp.dao.teamMapper;
+import com.accp.dao.yupengcheng.teamMapper;
 import com.alibaba.fastjson.JSON;
 
 @SpringBootTest

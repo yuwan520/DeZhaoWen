@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.yupengcheng.classBiz;
-import com.accp.pojo.car;
-import com.accp.pojo.class1;
+import com.accp.pojo.yupengcheng.car;
+import com.accp.pojo.yupengcheng.class1;
 import com.github.pagehelper.PageInfo;
 
 @RestController

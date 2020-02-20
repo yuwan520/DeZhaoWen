@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.yupengcheng.TeamBiz;
-import com.accp.pojo.class1;
-import com.accp.pojo.team;
+import com.accp.pojo.yupengcheng.class1;
+import com.accp.pojo.yupengcheng.team;
 import com.github.pagehelper.PageInfo;
 @RestController
 @RequestMapping("api/team")

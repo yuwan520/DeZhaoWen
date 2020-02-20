@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.yupengcheng.teamMapper">
+	<resultMap id="BaseResultMap" type="com.accp.pojo.yupengcheng.team">
+		<result column="teamno" property="teamno" jdbcType="INTEGER" />
+		<result column="teamname" property="teamname" jdbcType="VARCHAR" />
+		<result column="number" property="number" jdbcType="VARCHAR" />
+		<result column="artname" property="artname" jdbcType="VARCHAR" />
+		<result column="sex" property="sex" jdbcType="VARCHAR" />
+		<result column="phone" property="phone" jdbcType="INTEGER" />
+		<result column="site" property="site" jdbcType="VARCHAR" />
+		<result column="logname" property="logname" jdbcType="VARCHAR" />
+		<result column="idcard" property="idcard" jdbcType="VARCHAR" />
+		<result column="classno" property="classno" jdbcType="INTEGER" />
+		<result column="typeg" property="typeg" jdbcType="VARCHAR" />
+		<result column="brands" property="brands" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="selectAll" resultType="com.accp.vo.yupengcheng.outCar">
+		SELECT
+		numbercar,car.`brand`,typecar,mileage,team.`teamname`
+		FROM `car`
+		LEFT
+		JOIN `team`
+		ON `team`.`teamno`=`car`.`teamno`
+	</select>
+
+	<select id="selectTeamAll" resultType="com.accp.pojo.yupengcheng.team">
+		select * from team
+	</select>
+	
+	<select id="selectByteamno" resultType="com.accp.pojo.yupengcheng.team">
+		select * from team where teamno=#{teamno}
+	</select>
+
+	<delete id="deleteByTeamNo">
+		delete from team where teamno=#{teamno}
+	</delete>
+
+	<insert id="insert">
+		insert into
+		team(teamno,teamname,number,artname,sex,phone,site,logname,idcard,classno,typeg,brands)
+		values(#{record.teamno},#{record.teamname},#{record.number},#{record.artname},#{record.sex},#{record.phone},#{record.site},#{record.logname},#{record.idcard},#{record.classno},#{record.typeg},#{record.brands})
+	</insert>
+
+	<delete id="deleteByNumbercar">
+		delete from car where numbercar=#{numbercar}
+	</delete>
+
+	<update id="updateInTeam">
+		update team set
+		 	<if test="record.teamno != null">
+				teamno=#{record.teamno},
+			</if>
+			<if test="record.teamname != null">
+				teamname=#{record.teamname},
+			</if>
+			<if test="record.number != null">
+				number=#{record.number},
+			</if>
+			<if test="record.artname != null">
+				artname=#{record.artname},
+			</if>
+			<if test="record.sex != null">
+				sex=#{record.sex},
+			</if>
+			<if test="record.phone != null">
+				phone=#{record.phone},
+			</if>
+			<if test="record.site != null">
+				site=#{record.site},
+			</if>
+			<if test="record.logname != null">
+				logname=#{record.logname},
+			</if>
+			<if test="record.idcard != null">
+				idcard=#{record.idcard},
+			</if>
+			<if test="record.classno != null">
+				classno=#{record.classno},
+			</if>
+			<if test="record.typeg != null">
+				typeg=#{record.typeg},
+			</if>
+			<if test="record.brands != null">
+				brands=#{record.brands}
+			</if>
+		where teamno = #{record.teamno}
+	</update>
+
+	<!-- <insert id="insert" parameterType="com.accp.pojo.yupengcheng.team"> insert into 
+		team (teamno, teamname, number, artname, sex, phone, site, logname, idcard, 
+		classno, typeg, brands ) values (#{teamno,jdbcType=INTEGER}, #{teamname,jdbcType=VARCHAR}, 
+		#{number,jdbcType=VARCHAR}, #{artname,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+		#{phone,jdbcType=INTEGER}, #{site,jdbcType=VARCHAR}, #{logname,jdbcType=VARCHAR}, 
+		#{idcard,jdbcType=VARCHAR}, #{classno,jdbcType=INTEGER}, #{typeg,jdbcType=VARCHAR}, 
+		#{brands,jdbcType=VARCHAR} ) </insert> -->
+	<insert id="insertSelective" parameterType="com.accp.pojo.yupengcheng.team">
+		insert into team
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="teamno != null">
+				teamno,
+			</if>
+			<if test="teamname != null">
+				teamname,
+			</if>
+			<if test="number != null">
+				number,
+			</if>
+			<if test="artname != null">
+				artname,
+			</if>
+			<if test="sex != null">
+				sex,
+			</if>
+			<if test="phone != null">
+				phone,
+			</if>
+			<if test="site != null">
+				site,
+			</if>
+			<if test="logname != null">
+				logname,
+			</if>
+			<if test="idcard != null">
+				idcard,
+			</if>
+			<if test="classno != null">
+				classno,
+			</if>
+			<if test="typeg != null">
+				typeg,
+			</if>
+			<if test="brands != null">
+				brands,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="teamno != null">
+				#{teamno,jdbcType=INTEGER},
+			</if>
+			<if test="teamname != null">
+				#{teamname,jdbcType=VARCHAR},
+			</if>
+			<if test="number != null">
+				#{number,jdbcType=VARCHAR},
+			</if>
+			<if test="artname != null">
+				#{artname,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null">
+				#{sex,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				#{phone,jdbcType=INTEGER},
+			</if>
+			<if test="site != null">
+				#{site,jdbcType=VARCHAR},
+			</if>
+			<if test="logname != null">
+				#{logname,jdbcType=VARCHAR},
+			</if>
+			<if test="idcard != null">
+				#{idcard,jdbcType=VARCHAR},
+			</if>
+			<if test="classno != null">
+				#{classno,jdbcType=INTEGER},
+			</if>
+			<if test="typeg != null">
+				#{typeg,jdbcType=VARCHAR},
+			</if>
+			<if test="brands != null">
+				#{brands,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+</mapper>
