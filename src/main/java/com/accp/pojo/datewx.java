@@ -7,13 +7,22 @@ public class datewx {
 
     private String projectname;
 
-    private Integer price;
+    private String price;
 
     private String incomeclass;
 
-    private Integer bzprice;
+    private int hyrice;
+    public int getHyrice() {
+		return hyrice;
+	}
 
-    private Integer viprice;
+	public void setHyrice(int hyrice) {
+		this.hyrice = hyrice;
+	}
+
+	private Integer bzprice;
+
+    private Integer vipprice;
 
     private Integer agreementprice;
 
@@ -45,11 +54,11 @@ public class datewx {
         this.projectname = projectname == null ? null : projectname.trim();
     }
 
-    public Integer getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
@@ -70,11 +79,11 @@ public class datewx {
     }
 
     public Integer getViprice() {
-        return viprice;
+        return vipprice;
     }
 
     public void setViprice(Integer viprice) {
-        this.viprice = viprice;
+        this.vipprice = viprice;
     }
 
     public Integer getAgreementprice() {

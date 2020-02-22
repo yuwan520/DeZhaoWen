@@ -1,7 +1,7 @@
 package com.accp.pojo;
 
 public class maintaininfo {
-    private String carnumber;
+
 
     private String coding;
 
@@ -17,15 +17,17 @@ public class maintaininfo {
 
     private Integer project;
 
-    public String getCarnumber() {
-        return carnumber;
-    }
+    private String projectChild;
 
-    public void setCarnumber(String carnumber) {
-        this.carnumber = carnumber == null ? null : carnumber.trim();
-    }
+    public String getProjectChild() {
+		return projectChild;
+	}
 
-    public String getCoding() {
+	public void setProjectChild(String projectChild) {
+		this.projectChild = projectChild;
+	}
+
+	public String getCoding() {
         return coding;
     }
 
