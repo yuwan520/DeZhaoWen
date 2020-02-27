@@ -24,7 +24,7 @@ import com.github.pagehelper.PageInfo;
 
 	@GetMapping("/{pageNum}")
 	public PageInfo<JieSuanVo> find(@PathVariable int pageNum) {
-		PageHelper.startPage(pageNum, 3);
+		PageHelper.startPage(pageNum,6);
 		PageInfo<JieSuanVo> info = new PageInfo<>(Biz.find());
 		return info;
 	}
