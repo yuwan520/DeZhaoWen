@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.accp.biz.baimengxiang.datewxbiz;
 import com.accp.pojo.bmx.datewx;
 import com.accp.pojo.bmx.maintaininfo;
-import com.accp.pojo.bmx.pdetails;
+import com.accp.pojo.bmx.pdetailsbmx;
 import com.accp.vo.baimengxiang.ds;
 import com.alibaba.fastjson.JSON;
 
@@ -40,7 +40,7 @@ public class carAction {
 		}
 		
 		@GetMapping("lie")
-		public List<pdetails> selectlie(){
+		public List<pdetailsbmx> selectlie(){
 			return biz.selectlie();
 		}
 		

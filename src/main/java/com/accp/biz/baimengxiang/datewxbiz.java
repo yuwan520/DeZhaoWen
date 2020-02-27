@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.accp.dao.bmx.datewxMapper;
 import com.accp.pojo.bmx.datewx;
 import com.accp.pojo.bmx.maintaininfo;
-import com.accp.pojo.bmx.pdetails;
+import com.accp.pojo.bmx.pdetailsbmx;
 import com.accp.vo.baimengxiang.ds;
 @Service
 public class datewxbiz {
@@ -27,7 +27,7 @@ public class datewxbiz {
 		return wx.selectid();
 	}
 	
-	public List<pdetails> selectlie(){
+	public List<pdetailsbmx> selectlie(){
 		return wx.selectlie();
 	}
 	

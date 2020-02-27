@@ -33,7 +33,7 @@ WHERE projectChild=#{projectChild}
   <select id="selectid" resultType="java.lang.String">
 		SELECT coding FROM `maintaininfo` ORDER BY coding DESC LIMIT 1
 </select>
-<select id="selectlie"  resultType="com.accp.pojo.bmx.pdetails">
+<select id="selectlie"  resultType="com.accp.pojo.bmx.pdetailsbmx">
 SELECT detailno,projectChild FROM `pdetails`
 </select>
 <update id="updateDateWx">

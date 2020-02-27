@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.accp.pojo.bmx.datewx;
 import com.accp.pojo.bmx.maintaininfo;
-import com.accp.pojo.bmx.pdetails;
+import com.accp.pojo.bmx.pdetailsbmx;
 import com.accp.vo.baimengxiang.ds;
 
 public interface datewxMapper {
@@ -20,7 +20,7 @@ public interface datewxMapper {
  int savePerson(@Param("datewx") maintaininfo maintaininfo);
  
 String selectid();
-List<pdetails> selectlie();
+List<pdetailsbmx> selectlie();
  
  
  

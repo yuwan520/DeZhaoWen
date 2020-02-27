@@ -1,7 +1,7 @@
 
 package com.accp.pojo.bmx;
 
-public class pdetails {
+public class pdetailsbmx {
 	private String detailno;
 	private String projectChild;
 	private String projectNo;

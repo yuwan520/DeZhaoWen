@@ -16,8 +16,16 @@ public class mrecord1 {
     private Date ordertime;
 
     private String colsing;
+    private String comstatus;
+    public String getComstatus() {
+		return comstatus;
+	}
 
-    public String getCarhno() {
+	public void setComstatus(String comstatus) {
+		this.comstatus = comstatus;
+	}
+
+	public String getCarhno() {
         return carhno;
     }
 

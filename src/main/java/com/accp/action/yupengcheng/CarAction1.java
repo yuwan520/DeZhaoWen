@@ -17,7 +17,7 @@ import com.github.pagehelper.PageInfo;
 
 @RestController
 @RequestMapping("api/cars")
-public class CarAction {
+public class CarAction1 {
 	
 	@Autowired
 	private CarBiz carb;

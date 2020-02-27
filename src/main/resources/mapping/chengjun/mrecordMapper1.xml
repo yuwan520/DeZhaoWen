@@ -9,6 +9,7 @@
     <result column="orderType" property="ordertype" jdbcType="VARCHAR" />
     <result column="orderTime" property="ordertime" jdbcType="TIMESTAMP" />
     <result column="colsing" property="colsing" jdbcType="VARCHAR" />
+     <result column="comstatus" property="comstatus" jdbcType="VARCHAR"></result>
   </resultMap>
   
     <resultMap id="BaseResultMap1" type="com.accp.vo.chengjun.JieSuanVo" >
@@ -147,6 +148,6 @@
     update mrecord
     set 
       colsing = #{colsing,jdbcType=VARCHAR}
-    where rorder = #{rorder,jdbcType=VARCHAR}
+    where rorder = #{rorder,jdbcType=VARCHAR} 
   </update>
 </mapper>
