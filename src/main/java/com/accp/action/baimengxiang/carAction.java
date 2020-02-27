@@ -3,6 +3,7 @@ package com.accp.action.baimengxiang;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,13 +44,23 @@ public class carAction {
 			return biz.selectlie();
 		}
 		
-		
-		public List<maintaininfo>selectyt(String coding){
+		@GetMapping("xiugai/{coding}")
+		public List<maintaininfo>selectyt(@PathVariable String coding){
 			return biz.selectyt(coding);
 		}
 		
 			@PostMapping("update/{pid}")
-			public int updateDateWx(@RequestBody maintaininfo datewx,@PathVariable String pid) {
+			public int updateDateWx(@RequestBody maintaininfo datewx,@PathVariable int pid) {
 				return biz.updateDateWx(datewx, pid);
+			}
+			
+			@GetMapping("han/{projectChild}")
+			public List<maintaininfo> selectByprojectChild(@PathVariable String projectChild){
+				return biz.selectByprojectChild(projectChild);
+			}
+			
+			@PostMapping("shan/{coding}")
+			public int deleteid(@PathVariable int coding) {
+				return biz.deleteid(coding);
 			}
 }

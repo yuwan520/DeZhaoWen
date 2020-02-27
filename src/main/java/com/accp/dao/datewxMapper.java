@@ -20,7 +20,6 @@ public interface datewxMapper {
  int savePerson(@Param("datewx") maintaininfo maintaininfo);
  
 String selectid();
-
 List<pdetails> selectlie();
  
  
@@ -31,14 +30,23 @@ List<pdetails> selectlie();
  * @return
  */
  List<maintaininfo> selectyt(@Param("coding")String coding);
+ 
+ 
 /**
  * 修改维修项目
  * @param datewx
  * @param pid
  * @return
  */
- int updateDateWx(@Param("wx")maintaininfo datewx,@Param("pid")String pid);
+ int updateDateWx(@Param("wx")maintaininfo datewx,@Param("pid")int pid);
  
 
-
+ /**
+  * 
+  * 查询BYprojectChild
+  */
+ List<maintaininfo> selectByprojectChild(@Param("projectChild")String projectChild);
+ 
+ 
+ int deleteid(@Param("coding")int coding);
 }

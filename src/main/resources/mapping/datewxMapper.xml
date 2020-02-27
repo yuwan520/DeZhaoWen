@@ -20,6 +20,13 @@ LEFT JOIN `pdetails` ON `maintaininfo`.`project`=`pdetails`.`detailno`
 LEFT JOIN `projecttype` ON `pdetails`.`projectNo`=`projecttype`.`pno`
   </select>
   
+  <select id="selectByprojectChild" resultType="com.accp.vo.baimengxiang.ds">
+  SELECT projectChild,coding,itemName,priceType,standard,VIP FROM `maintaininfo` 
+LEFT JOIN `pdetails` ON `maintaininfo`.`project`=`pdetails`.`detailno`
+LEFT JOIN `projecttype` ON `pdetails`.`projectNo`=`projecttype`.`pno`
+WHERE projectChild=#{projectChild}
+  </select>
+  
   <insert id="savePerson" >
  INSERT INTO `maintaininfo`(coding,itemName,priceType,standard ,VIP,project)VALUES(#{datewx.coding},#{datewx.itemname},#{datewx.pricetype},#{datewx.standard},#{datewx.vip},#{datewx.project})
   </insert> 
@@ -29,10 +36,16 @@ LEFT JOIN `projecttype` ON `pdetails`.`projectNo`=`projecttype`.`pno`
 <select id="selectlie"  resultType="com.accp.pojo.pdetails">
 SELECT detailno,projectChild FROM `pdetails`
 </select>
-
 <update id="updateDateWx">
-		UPDATE `maintaininfo` SET coding=#{wx.coding},itemname=#{wx.itemname},pricetype=#{wx.pricetype},projectChild=#{wx.projectChild},standard=#{wx.standard}, vip=#{wx.vip}}
-		WHERE pid=#{pid}
+		UPDATE `maintaininfo` SET coding=#{wx.coding},itemname=#{wx.itemname},pricetype=#{wx.pricetype},standard=#{wx.standard}, vip=#{wx.vip}
+		WHERE coding=#{pid}
 </update>
 
+<select id="selectyt"  resultType="com.accp.pojo.maintaininfo">
+SELECT * FROM maintaininfo WHERE coding=#{coding}
+</select>
+
+<delete id="deleteid">
+delete from maintaininfo where coding=#{coding};
+</delete>
 </mapper>

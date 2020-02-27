@@ -36,10 +36,15 @@ public class datewxbiz {
 		return wx.selectyt(coding);
 	}
 	
-	public int updateDateWx(maintaininfo datewx,String pid) {
+	public int updateDateWx(maintaininfo datewx,int pid) {
 		return wx.updateDateWx(datewx, pid);
 	}
 	
-
+public List<maintaininfo> selectByprojectChild(String projectChild){
+	return wx.selectByprojectChild(projectChild);
+}
+public int deleteid(int coding) {
+	return wx.deleteid(coding);
+}
 
 }

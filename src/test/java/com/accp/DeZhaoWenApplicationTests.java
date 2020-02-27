@@ -19,7 +19,9 @@ class DeZhaoWenApplicationTests {
 	@Test
 	void contextLoads() {
 	
-		System.out.println(wx.selectlie());
+		System.out.println(JSON.toJSONString(wx.selectByprojectChild("刹车片")));
+		
+	
 	}
 
 }
