@@ -51,7 +51,7 @@
   </select>
   
    <select id="selectByPrimaryKey1" resultMap="BaseResultMap1"  >
-   SELECT A.`rorder` AS rorder,A.`orderType` AS orderType,A.`status` AS `status`,B.`clearing` AS clearing,A.`colsing` AS colsing,A.`jiesuanren` AS jiesuanren,B.`estimated` AS estimated ,B.`businessType` AS businessType,(SELECT `client`.`clientname` FROM `client` WHERE `client`.`clientid`=D.`vehiclefname` ) AS khname,E.`wxgroup` AS wxgroup ,A.`carHno` AS carHno FROM mrecord AS A JOIN pickcar AS B ON A.`rorder`=B.`wx` JOIN maintains AS C ON C.`wxorders`=B.`wx`  JOIN vehicle AS D  ON D.`vehiclecp`=A.`carHno` JOIN `maintains` AS E ON E.`wxorders`=A.`rorder` GROUP BY  E.`wxgroup`
+   SELECT A.`rorder` AS rorder,A.`orderType` AS orderType,A.`status` AS `status`,B.`clearing` AS clearing,A.`colsing` AS colsing,A.`jiesuanren` AS jiesuanren,B.`estimated` AS estimated ,B.`businessType` AS businessType,(SELECT `client`.`clientname` FROM `client` WHERE `client`.`clientid`=D.`vehiclefname` ) AS khname,E.`wxgroup` AS wxgroup ,A.`carHno` AS carHno FROM mrecord AS A JOIN pickcar AS B ON A.`rorder`=B.`wx` JOIN maintains AS C ON C.`wxorders`=B.`wx`  JOIN vehicle AS D  ON D.`vehiclecp`=A.`carHno` JOIN `maintains` AS E ON E.`wxorders`=A.`rorder`  WHERE A.`comstatus`='1' GROUP BY  E.`wxgroup`
 
   </select>
  <select id="selectByPrimaryKey2" resultMap="BaseResultMap2" parameterType="java.lang.String"  >
