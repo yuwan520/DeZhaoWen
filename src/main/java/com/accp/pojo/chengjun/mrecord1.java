@@ -16,6 +16,7 @@ public class mrecord1 {
     private Date ordertime;
 
     private String colsing;
+
     private String comstatus;
     public String getComstatus() {
 		return comstatus;
@@ -25,9 +26,6 @@ public class mrecord1 {
 		this.comstatus = comstatus;
 	}
 
-	public String getCarhno() {
-        return carhno;
-    }
 
     public void setCarhno(String carhno) {
         this.carhno = carhno == null ? null : carhno.trim();
