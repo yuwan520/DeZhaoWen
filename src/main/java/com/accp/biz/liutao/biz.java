@@ -1,17 +1,16 @@
 package com.accp.biz.liutao;
 
+import com.accp.dao.liutao.CompletionMapper;
 import com.accp.dao.liutao.classMapper;
 import com.accp.dao.liutao.mrecordMapper;
 import com.accp.dao.liutao.pickcarMapper;
-import com.accp.pojo.*;
-import com.accp.pojo.liutao.class1;
-import com.accp.pojo.liutao.mrecord;
-import com.accp.pojo.liutao.pickcar;
-import com.accp.pojo.liutao.projecttype;
-import com.accp.pojo.liutao.vehicle;
+import com.accp.pojo.liutao.*;
 import com.accp.vo.liutao.carInfo;
+import com.accp.vo.liutao.cominfo;
 import com.accp.vo.liutao.minfo;
 import com.accp.vo.liutao.vehicleInfo;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +37,9 @@ public class biz {
 
     @Autowired
     private classMapper classMapper;
+
+    @Autowired
+    private CompletionMapper completionMapper;
 
 
     //@Transactional(propagation = Propagation.SUPPORTS,isolation = Isolation.READ_COMMITTED,readOnly = true)
@@ -96,13 +98,38 @@ public class biz {
         return classMapper.queryArtisan();
     }
 
-    public List<vehicleInfo> queryAllm(){
-        return mrecordMapper.queryAllm();
+    public PageInfo<vehicleInfo> queryAllm(Integer num,Integer size,cominfo cominfo){
+        PageHelper.startPage(num,size);
+        return new PageInfo<vehicleInfo>(mrecordMapper.queryAllm(cominfo));
     }
 
     public int comAccp(String eno){
         return mrecordMapper.comAccp(eno);
     }
+
+    public int completion(Completion completion){
+        if(completion.getQualified()==0){
+            //合格，修改接车状态
+            mrecordMapper.comAccp(completion.getEno());
+        }
+        return mrecordMapper.completion(completion);
+    }
+
+    public String queryReWork(String eno){
+        return completionMapper.queryReWork(eno);
+    }
+
+    public int updateQualified(String eno){
+        return completionMapper.updateQualified(eno);
+    }
+
+    public int updateHgQualified(String eno){
+        mrecordMapper.comAccp(eno);
+        return completionMapper.updateHgQualified(eno);
+    }
+
+
+
 
 
 

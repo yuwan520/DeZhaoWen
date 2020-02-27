@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.liutao.CompletionMapper">
+  <resultMap id="BaseResultMap" type="com.accp.pojo.liutao.Completion">
+    <!--@mbg.generated-->
+    <!--@Table completion-->
+    <id column="eno" jdbcType="VARCHAR" property="eno" />
+    <result column="qualified" jdbcType="INTEGER" property="qualified" />
+    <result column="delays" jdbcType="VARCHAR" property="delays" />
+    <result column="penatly" jdbcType="INTEGER" property="penatly" />
+    <result column="zjperson" jdbcType="VARCHAR" property="zjperson" />
+  </resultMap>
+  <select id="queryReWork" resultType="java.lang.String">
+    SELECT qualified FROM `completion` WHERE eno=#{eno}
+  </select>
+  <update id="updateQualified">
+    UPDATE `completion` SET qualified=qualified+1 WHERE eno=#{eno};
+  </update>
+  <update id="updateHgQualified">
+      UPDATE `completion` SET qualified='0' WHERE eno=#{eno}
+  </update>
+</mapper>

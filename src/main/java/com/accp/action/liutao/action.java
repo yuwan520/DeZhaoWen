@@ -1,13 +1,12 @@
 package com.accp.action.liutao;
 
 import com.accp.biz.liutao.biz;
-import com.accp.pojo.liutao.class1;
-import com.accp.pojo.liutao.pickcar;
-import com.accp.pojo.liutao.projecttype;
-import com.accp.pojo.liutao.vehicle;
+import com.accp.pojo.liutao.*;
 import com.accp.vo.liutao.carInfo;
+import com.accp.vo.liutao.cominfo;
 import com.accp.vo.liutao.minfo;
 import com.accp.vo.liutao.vehicleInfo;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -76,15 +75,40 @@ public class action {
         return biz.queryArtisan();
     }
 
-    @GetMapping("allm")
-    public List<vehicleInfo> queryAllm(){
-        return biz.queryAllm();
+    @PostMapping("allm/{num}/{size}")
+    public PageInfo<vehicleInfo> queryAllm(@PathVariable Integer num,@PathVariable Integer size, @RequestBody cominfo cominfo){
+        return biz.queryAllm(num,size,cominfo);
     }
 
     @PostMapping("accp/{eno}")
     public int comAccp(@PathVariable String eno){
         return biz.comAccp(eno);
     }
+
+    @PostMapping("comp")
+    public int completion(@RequestBody Completion completion){
+        return biz.completion(completion);
+    }
+
+    @GetMapping("rwk/{eno}")
+    public String queryReWork(@PathVariable String eno){
+        if(biz.queryReWork(eno)==null){
+            return "0";
+        }
+        return biz.queryReWork(eno);
+    }
+
+    @PostMapping("upqd/{eno}")
+    public int updateQualified(@PathVariable String eno){
+        return biz.updateQualified(eno);
+    }
+
+    @PostMapping("hgqud/{eno}")
+    public int updateHgQualified(@PathVariable String eno){
+        return biz.updateHgQualified(eno);
+    }
+
+
 
 
 }

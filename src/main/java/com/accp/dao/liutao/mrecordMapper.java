@@ -1,7 +1,9 @@
 package com.accp.dao.liutao;
 
 
+import com.accp.pojo.liutao.Completion;
 import com.accp.pojo.liutao.mrecord;
+import com.accp.vo.liutao.cominfo;
 import com.accp.vo.liutao.vehicleInfo;
 import org.apache.ibatis.annotations.Param;
 
@@ -24,19 +26,28 @@ public interface mrecordMapper {
      */
     List<mrecord> queryPickCar(@Param("carno") String carno);
 
-    /**
-     * 竣工查询
-     *
-     * @return
-     */
-    List<vehicleInfo> queryAllm();
 
     /**
-     * 竣工验收(简单版)
+     * 竣工信息查询
      *
+     * @param cominfo
+     * @return
+     */
+    List<vehicleInfo> queryAllm(@Param("cominfo") cominfo cominfo);
+
+    /**
+     *
+     *竣工修改状态
      * @param eno
      * @return
      */
     int comAccp(@Param("eno") String eno);
+
+    /**
+     * 竣工验收(高级版)
+     * @param completion
+     * @return
+     */
+    int completion(@Param("completion") Completion completion);
 
 }
