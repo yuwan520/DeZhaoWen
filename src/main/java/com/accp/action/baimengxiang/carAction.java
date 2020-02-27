@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.baimengxiang.datewxbiz;
-import com.accp.pojo.datewx;
-import com.accp.pojo.maintaininfo;
-import com.accp.pojo.pdetails;
+import com.accp.pojo.bmx.datewx;
+import com.accp.pojo.bmx.maintaininfo;
+import com.accp.pojo.bmx.pdetails;
 import com.accp.vo.baimengxiang.ds;
 import com.alibaba.fastjson.JSON;
 

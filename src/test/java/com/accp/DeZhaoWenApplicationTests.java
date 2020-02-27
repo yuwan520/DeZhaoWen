@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.accp.dao.datewxMapper;
-import com.accp.pojo.datewx;
-import com.accp.pojo.maintaininfo;
+import com.accp.dao.bmx.datewxMapper;
+import com.accp.pojo.bmx.datewx;
+import com.accp.pojo.bmx.maintaininfo;
 import com.alibaba.fastjson.JSON;
 
 @SpringBootTest
