@@ -1,9 +1,6 @@
 package com.accp.biz.liutao;
 
-import com.accp.dao.liutao.CompletionMapper;
-import com.accp.dao.liutao.classMapper;
-import com.accp.dao.liutao.mrecordMapper;
-import com.accp.dao.liutao.pickcarMapper;
+import com.accp.dao.liutao.*;
 import com.accp.pojo.liutao.*;
 import com.accp.vo.liutao.carInfo;
 import com.accp.vo.liutao.cominfo;
@@ -41,8 +38,10 @@ public class biz {
     @Autowired
     private CompletionMapper completionMapper;
 
+    @Autowired
+    private PcstatusMapper pcstatusMapper;
 
-    //@Transactional(propagation = Propagation.SUPPORTS,isolation = Isolation.READ_COMMITTED,readOnly = true)
+
     public List<vehicle> queryCarNo(){
         return vehicleMapper.queryCarNo();
     }
@@ -127,6 +126,11 @@ public class biz {
         mrecordMapper.comAccp(eno);
         return completionMapper.updateHgQualified(eno);
     }
+
+    public List<Pcstatus> qAllS(){
+        return pcstatusMapper.qAllS();
+    }
+
 
 
 

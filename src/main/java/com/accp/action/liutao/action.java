@@ -108,6 +108,11 @@ public class action {
         return biz.updateHgQualified(eno);
     }
 
+    @GetMapping("qas")
+    public List<Pcstatus> qAllS(){
+        return biz.qAllS();
+    }
+
 
 
 

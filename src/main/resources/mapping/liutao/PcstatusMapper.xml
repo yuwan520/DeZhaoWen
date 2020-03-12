@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.liutao.PcstatusMapper">
+  <resultMap id="BaseResultMap" type="com.accp.pojo.liutao.Pcstatus">
+    <!--@mbg.generated-->
+    <!--@Table pcstatus-->
+    <result column="cno" jdbcType="VARCHAR" property="cno" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <select id="qAllS" resultMap="BaseResultMap">
+    SELECT cno,`status` FROM `pcstatus`
+  </select>
+</mapper>
