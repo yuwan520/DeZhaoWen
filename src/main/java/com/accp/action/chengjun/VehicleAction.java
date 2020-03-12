@@ -30,7 +30,7 @@ public class VehicleAction {
   @GetMapping("/{pageNum}")
   //查讯所有车
   public PageInfo<vehicle1> find(@PathVariable int pageNum){
- 	PageHelper.startPage(pageNum,3);
+ 	PageHelper.startPage(pageNum,10);
  	 PageInfo<vehicle1> info=new PageInfo<>(Biz.find());
  	 return info;
   }

@@ -13,5 +13,6 @@ public interface CompletionMapper {
 
     //返工后合格,修改为0且修改状态
     int updateHgQualified(@Param("eno") String eno);
-
+    
+    
 }

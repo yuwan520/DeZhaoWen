@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.bmx.datewxMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.bmx.datewx" >
+    <result column="maintainclass" property="maintainclass" jdbcType="VARCHAR" />
+    <result column="projectid" property="projectid" jdbcType="INTEGER" />
+    <result column="projectname" property="projectname" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="INTEGER" />
+    <result column="incomeclass" property="incomeclass" jdbcType="VARCHAR" />
+    <result column="bzprice" property="bzprice" jdbcType="INTEGER" />
+    <result column="viprice" property="viprice" jdbcType="INTEGER" />
+    <result column="agreementprice" property="agreementprice" jdbcType="INTEGER" />
+    <result column="compensateforprice" property="compensateforprice" jdbcType="INTEGER" />
+    <result column="insuranceprice" property="insuranceprice" jdbcType="INTEGER" />
+  </resultMap>
+
+  <select id="selectAll" resultType="com.accp.vo.baimengxiang.ds">
+  SELECT projectChild,coding,itemName,priceType,standard,VIP FROM `maintaininfo` 
+LEFT JOIN `pdetails` ON `maintaininfo`.`project`=`pdetails`.`detailno`
+LEFT JOIN `projecttype` ON `pdetails`.`projectNo`=`projecttype`.`pno`
+  </select>
+  
+  <select id="selectByprojectChild" resultType="com.accp.vo.baimengxiang.ds">
+  SELECT projectChild,coding,itemName,priceType,standard,VIP FROM `maintaininfo` 
+LEFT JOIN `pdetails` ON `maintaininfo`.`project`=`pdetails`.`detailno`
+LEFT JOIN `projecttype` ON `pdetails`.`projectNo`=`projecttype`.`pno`
+WHERE projectChild=#{projectChild}
+  </select>
+  
+  <insert id="savePerson" >
+ INSERT INTO `maintaininfo`(coding,itemName,priceType,standard ,VIP,project)VALUES(#{datewx.coding},#{datewx.itemname},#{datewx.pricetype},#{datewx.standard},#{datewx.vip},#{datewx.project})
+  </insert> 
+  <select id="selectid" resultType="java.lang.String">
+		SELECT coding FROM `maintaininfo` ORDER BY coding DESC LIMIT 1
+</select>
+<select id="selectlie"  resultType="com.accp.pojo.bmx.pdetailsbmx">
+SELECT detailno,projectChild FROM `pdetails`
+</select>
+<update id="updateDateWx">
+		UPDATE `maintaininfo` SET coding=#{wx.coding},itemname=#{wx.itemname},pricetype=#{wx.pricetype},standard=#{wx.standard}, vip=#{wx.vip}
+		WHERE coding=#{pid}
+</update>
+
+<select id="selectyt"  resultType="com.accp.pojo.bmx.maintaininfo">
+SELECT * FROM maintaininfo WHERE coding=#{coding}
+</select>
+
+<delete id="deleteid">
+delete from maintaininfo where coding=#{coding};
+</delete>
+</mapper>

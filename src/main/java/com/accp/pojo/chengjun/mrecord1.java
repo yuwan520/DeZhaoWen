@@ -17,9 +17,15 @@ public class mrecord1 {
 
     private String colsing;
 
-    public String getCarhno() {
-        return carhno;
-    }
+    private String comstatus;
+    public String getComstatus() {
+		return comstatus;
+	}
+
+	public void setComstatus(String comstatus) {
+		this.comstatus = comstatus;
+	}
+
 
     public void setCarhno(String carhno) {
         this.carhno = carhno == null ? null : carhno.trim();
